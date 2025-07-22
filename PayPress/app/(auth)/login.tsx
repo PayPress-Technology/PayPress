@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Colors } from "@/constants/Colors";
 
 export default function Login() {
   return (
@@ -39,7 +40,7 @@ export default function Login() {
 }
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: "#8C8989",
+    backgroundColor: Colors.Primary,
     width: "100%",
     height: "100%",
     borderTopLeftRadius: 50,

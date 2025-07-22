@@ -24,28 +24,28 @@ const Index = () => {
       id: 1,
       title: "The smarter",
       subtitle: " way to save, stress-free",
-      // image: require("../assets/images/onbording1.png"),
+      image: require("../assets/images/onbording1.png"),
       colors: ["#FFFFFF", "#3498DB"],
     },
     {
       id: 2,
       title: "Built to protect ",
       subtitle: " your every penny",
-      // image: require("../assets/images/onbording2.png"),
+      image: require("../assets/images/onbording2.png"),
       colors: ["#FFFFFF", "#2ECC71"],
     },
     {
       id: 3,
       title: "Automate your ",
       subtitle: "savings. Live freely",
-      // image: require("../assets/images/onboarding3.png"),
+      image: require("../assets/images/onboarding3.png"),
       colors: ["#FFFFFF", "#9B59B6"],
     },
     {
       id: 4,
       title: "Crush your financial  ",
       subtitle: "goals, one naira at a time",
-      // image: require("../assets/images/onboarding3.png"),
+      image: require("../assets/images/onBoarding4.png"),
       colors: ["#FFFFFF", "#9B59B6"],
     },
   ];
@@ -71,21 +71,6 @@ const Index = () => {
   const currentData = onboardingData[currentIndex];
   return (
     <SafeAreaView style={styles.safeArea}>
-      {/* Header with Skip button
-        <View style={styles.header}>
-          <TouchableOpacity onPress={skipOnboarding}>
-            <Text style={styles.skipText}>Skip</Text>
-          </TouchableOpacity>
-        </View> */}
-
-      {/* Main Content */}
-      {/* <View style={styles.content}> */}
-      {/* <Image source={currentData.image} style={styles.bgImage} /> */}
-      {/* 
-        <Text style={styles.mainTxt}>{currentData.title}</Text>
-
-        <Text style={styles.subTxt}>{currentData.subtitle}</Text>
-      </View> */}
       <FlatList
         data={onboardingData}
         keyExtractor={(item) => item.id.toString()}
@@ -94,8 +79,11 @@ const Index = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={[styles.content, { width }]}>
-            <Text style={styles.mainTxt}>{item.title}</Text>
-            <Text style={styles.subTxt}>{item.subtitle}</Text>
+            <Image source={currentData.image} style={styles.bgImage} />
+
+            <Text style={styles.subTxt}>{currentData.title}</Text>
+
+            <Text style={styles.subTxt}>{currentData.subtitle}</Text>
           </View>
         )}
         onScroll={(e) => {
@@ -130,14 +118,15 @@ const Index = () => {
           <CustomButton
             text={"Create Account"}
             onPress={() => router.navigate("./signUp")}
+            color="#FFD700"
           />
         </View>
 
         <View>
-          {" "}
           <CustomButton
             text={"Login"}
             onPress={() => router.navigate("./login")}
+            color={Colors.white}
           />
         </View>
       </View>
@@ -152,7 +141,7 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    backgroundColor: "#8C8989",
+    backgroundColor: Colors.white,
   },
   header: {
     flexDirection: "row",
@@ -160,11 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 10,
   },
-  skipText: {
-    fontSize: 16,
-    color: "#666",
-    fontWeight: "500",
-  },
+
   content: {
     flex: 1,
     justifyContent: "center",
@@ -178,19 +163,20 @@ const styles = StyleSheet.create({
     width: width * 0.8,
     marginVertical: 20,
   },
-  mainTxt: {
-    fontWeight: "600",
-    fontSize: 16,
-    textAlign: "center",
-    color: "#333",
-    marginBottom: 2,
-  },
+  // mainTxt: {
+  //   fontWeight: "600",
+  //   fontSize: 16,
+  //   textAlign: "center",
+  //   color: "#333",
+  //   marginBottom: 2,
+  // },
   subTxt: {
     textAlign: "center",
     fontSize: 16,
     color: "black",
     lineHeight: 24,
     paddingHorizontal: 20,
+    fontFamily: "PoppinsBold",
   },
   bottomSection: {
     paddingBottom: 10,
@@ -209,10 +195,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   activePageIndicator: {
-    backgroundColor: "#333",
+    backgroundColor: Colors.white,
   },
   inactivePageIndicator: {
-    backgroundColor: "#333",
+    backgroundColor: Colors.white,
     opacity: 0.3,
   },
   navigationContainer: {
@@ -238,23 +224,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  nextButton: {
-    minWidth: 60,
-    height: 60,
-    backgroundColor: "#FFD700",
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
+
   nextButtonText: {
     fontSize: 14,
     fontWeight: "600",
@@ -267,7 +237,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "100%",
     height: "40%",
-    backgroundColor: "white",
+    backgroundColor: Colors.Primary,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     justifyContent: "center",
