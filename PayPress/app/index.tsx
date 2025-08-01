@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   subTxt: {
     textAlign: "center",
     fontSize: 16,
-    color: "black",
+    color: Colors.darkMode,
     lineHeight: 24,
     paddingHorizontal: 20,
     fontFamily: "PoppinsBold",

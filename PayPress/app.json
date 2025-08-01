@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/mainLogo.png",
         "backgroundColor": "#0B57BD"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.marvtech.PayCoin"
     },
     "web": {
       "bundler": "metro",
@@ -29,7 +30,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/mainLogo.png",
-          "imageWidth": 200,
+
           "resizeMode": "contain",
           "backgroundColor": "#0B57BD"
         }

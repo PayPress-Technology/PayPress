@@ -11,7 +11,7 @@ export default function HomeScreen() {
           textAlign: "center",
         }}
       >
-        Welcome to PayPress!!!
+        my savings
       </Text>
     </SafeAreaView>
   );
