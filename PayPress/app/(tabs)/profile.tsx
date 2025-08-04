@@ -7,7 +7,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 
-export default function HomeScreen() {
+export default function my_savings() {
   return (
     <SafeAreaView>
       {/* Back Icon */}
@@ -28,7 +28,7 @@ export default function HomeScreen() {
           textAlign: "center",
         }}
       >
-        Welcome to PayPress!!!
+        Welcome to Profile!!!
       </Text>
     </SafeAreaView>
   );

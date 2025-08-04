@@ -40,8 +40,14 @@ export default function RootLayout() {
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="(invest_money)" />
+      <Stack.Screen name="(my_savings)" />
+      <Stack.Screen name="(start_savings)" />
       <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="(mySavings)" />
+      <Stack.Screen name="(transaction_screens)" />
+      <Stack.Screen name="(account)" />
+      <Stack.Screen name="index" />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

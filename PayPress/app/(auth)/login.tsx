@@ -141,7 +141,7 @@ export default function Login() {
             text={"LOG IN"}
             onPress={() => {
               // handle login action here
-              router.navigate("/home");
+              router.navigate("/Home");
             }}
             color={Colors.Secondary}
           />
@@ -153,6 +153,9 @@ export default function Login() {
           </TouchableOpacity>
 
           <CustonButton1
+            onPress={() => {
+              router.navigate("./Loginbiometrics");
+            }}
             text={
               <View
                 style={{
@@ -178,9 +181,6 @@ export default function Login() {
                 />
               </View>
             }
-            onPress={() => {
-              // handle login action here
-            }}
             color={Colors.white}
           />
         </View>

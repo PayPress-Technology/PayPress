@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-import Colors from "../constants/Colors";
+import { Colors } from "../constants/Colors";
 
 const CustonButton1 = ({ text, onPress, color }) => {
   return (
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "PoppinsBold",
 
-    // color: "white",
+    color: Colors.darkMode,
   },
 });
