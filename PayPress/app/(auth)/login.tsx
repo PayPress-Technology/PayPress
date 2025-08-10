@@ -19,6 +19,18 @@ import { router } from "expo-router";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleRegister = () => {
+    if (!email || !password) {
+      setError("Invalide Entry. Try Again.");
+      return;
+    }
+    setError("");
+    // Continue registration logic...
+  };
 
   return (
     <SafeAreaView>
@@ -64,6 +76,8 @@ export default function Login() {
         <View style={styles.mainContainer}>
           <View style={{ marginTop: 20 }}>
             <TextInput
+              value={email}
+              onChangeText={setEmail}
               keyboardType="email-address"
               autoCapitalize="none"
               placeholder="Email address"
@@ -94,6 +108,8 @@ export default function Login() {
                 }}
               />
               <TextInput
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry={!showPassword}
                 keyboardType="numeric"
                 autoCapitalize="none"
@@ -112,6 +128,17 @@ export default function Login() {
                   marginBottom: 50,
                 }}
               />
+              {error ? (
+                <Text
+                  style={{
+                    color: Colors.Secondary,
+                    textAlign: "center",
+                    padding: 10,
+                  }}
+                >
+                  {error}
+                </Text>
+              ) : null}
 
               <TouchableOpacity
                 style={{
@@ -141,7 +168,10 @@ export default function Login() {
             text={"LOG IN"}
             onPress={() => {
               // handle login action here
-              router.navigate("/Home");
+              handleRegister();
+              if (email && password) {
+                router.navigate("/Home");
+              }
             }}
             color={Colors.Secondary}
           />

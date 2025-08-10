@@ -19,6 +19,20 @@ import { router } from "expo-router";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleRegister = () => {
+    if (!firstName || !lastName || !email || !password) {
+      setError("All fields except referral code are required.");
+      return;
+    }
+    setError("");
+    // Continue registration logic...
+  };
 
   return (
     <SafeAreaView>
@@ -67,6 +81,8 @@ export default function Login() {
           <View style={{ marginVertical: 1 }}>
             <View>
               <TextInput
+                value={firstName}
+                onChangeText={setFirstName}
                 keyboardType="default"
                 autoCapitalize="none"
                 placeholder="First name (Surname)"
@@ -89,6 +105,8 @@ export default function Login() {
 
             <View>
               <TextInput
+                value={lastName}
+                onChangeText={setLastName}
                 keyboardType="default"
                 autoCapitalize="none"
                 placeholder="Last name "
@@ -111,6 +129,8 @@ export default function Login() {
 
             <View>
               <TextInput
+                value={email}
+                onChangeText={setEmail}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 placeholder="Email Address"
@@ -145,6 +165,8 @@ export default function Login() {
                 }}
               />
               <TextInput
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry={!showPassword}
                 keyboardType="numeric"
                 autoCapitalize="none"
@@ -164,6 +186,11 @@ export default function Login() {
                   marginVertical: 20,
                 }}
               />
+              {error ? (
+                <Text style={{ color: "red", textAlign: "center" }}>
+                  {error}
+                </Text>
+              ) : null}
 
               <TouchableOpacity
                 style={{

@@ -15,6 +15,7 @@ import CustonButton1 from "@/components/CustomButton1";
 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +42,7 @@ export default function Login() {
               color={"#fff"}
               style={{ alignSelf: "center", marginVertical: 50 }}
             />
+
             <CustonButton1
               text={"Continue"}
               onPress={() => {

@@ -15,10 +15,30 @@ import CustonButton1 from "@/components/CustomButton1";
 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const handleBiometricAuth = async () => {
+    const hasHardware = await LocalAuthentication.hasHardwareAsync();
+    const isEnrolled = await LocalAuthentication.isEnrolledAsync();
 
+    if (!hasHardware || !isEnrolled) {
+      setError("Biometric authentication not available.");
+      return;
+    }
+
+    const result = await LocalAuthentication.authenticateAsync({
+      promptMessage: "Authenticate with Fingerprint",
+    });
+
+    if (result.success) {
+      router.navigate("/Home"); // or your desired route
+    } else {
+      setError("Authentication failed. Try again.");
+    }
+  };
   return (
     <SafeAreaView>
       <KeyboardAvoidingView
@@ -28,12 +48,14 @@ export default function Login() {
       >
         <View style={styles.mainContainer}>
           <View style={{ marginTop: 20 }}>
-            <Ionicons
-              name="finger-print-outline"
-              size={120}
-              color={"#fff"}
-              style={{ alignSelf: "center", marginVertical: 50 }}
-            />
+            <TouchableOpacity onPress={handleBiometricAuth}>
+              <Ionicons
+                name="finger-print-outline"
+                size={120}
+                color={"#fff"}
+                style={{ alignSelf: "center", marginVertical: 50 }}
+              />
+            </TouchableOpacity>
             <View style={styles.bioTxtContainer}>
               <Text style={styles.bioTxt}>Fingerprint for PAYpress</Text>
               <Text style={styles.bioTxtSub}>
@@ -41,11 +63,14 @@ export default function Login() {
                 Use fingerprint to unlock PAYpress
               </Text>
             </View>
+            {error ? (
+              <Text style={{ color: "red", textAlign: "center" }}>{error}</Text>
+            ) : null}
             <CustonButton1
               text={"Cancel"}
               onPress={() => {
                 // handle login action here
-                router.navigate("");
+                router.back();
               }}
               color={Colors.Secondary}
             />

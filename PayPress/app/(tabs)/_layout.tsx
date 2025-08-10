@@ -7,17 +7,30 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors.darkMode,
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName: React.ComponentProps<typeof Ionicons>["name"] =
+            "home-outline";
+          if (route.name === "Home") iconName = "home-outline";
+          else if (route.name === "my_savings") iconName = "wallet";
+          else if (route.name === "investment")
+            iconName = "stats-chart-outline";
+          else if (route.name === "profile") iconName = "person-circle-outline";
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: Colors.Primary,
+        tabBarInactiveTintColor: Colors.darkMode,
+
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
+
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
@@ -25,8 +38,14 @@ export default function TabLayout() {
           },
           default: {},
         }),
-      }}
+      })}
     >
+      <Tabs.Screen
+        name="Home"
+        options={{
+          title: "Home",
+        }}
+      />
       <Tabs.Screen
         name="my_savings"
         options={{
@@ -40,12 +59,6 @@ export default function TabLayout() {
         }}
       />
 
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-        }}
-      />
       <Tabs.Screen
         name="profile"
         options={{
