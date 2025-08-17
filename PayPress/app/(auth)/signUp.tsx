@@ -234,9 +234,28 @@ export default function Login() {
               }}
             />
           </View>
-          <Text style={{ color: "white", textAlign: "center", marginTop: 15 }}>
-            Step 1
-          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignSelf: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ color: "white" }}>Step 1</Text>
+
+            <TouchableOpacity
+              style={{
+                padding: 15,
+              }}
+              onPress={() => router.navigate("./createPin")}
+            >
+              <Ionicons
+                name="arrow-forward-circle-outline"
+                size={30}
+                color={Colors.white}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
