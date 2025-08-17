@@ -239,6 +239,7 @@ export default function Login() {
               flexDirection: "row",
               alignSelf: "center",
               justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Text style={{ color: "white" }}>Step 1</Text>
