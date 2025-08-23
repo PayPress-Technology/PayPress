@@ -16,6 +16,7 @@ import eyeOpen from "@/assets/images/visible.png";
 import eyeClosed from "@/assets/images/hide.png";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { ScrollView } from "react-native";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, marginBottom: 50 }}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         // style={{ flex: 1 }}
@@ -77,187 +78,187 @@ export default function Login() {
         >
           Register to start saving and investing with PAYpress today!
         </Text>
-        <View style={styles.mainContainer}>
-          <View style={{ marginVertical: 1 }}>
-            <View>
-              <TextInput
-                value={firstName}
-                onChangeText={setFirstName}
-                keyboardType="default"
-                autoCapitalize="none"
-                placeholder="First name (Surname)"
-                placeholderTextColor={Colors.darkMode}
-                autoCorrect={false}
-                style={{
-                  width: "90%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: Colors.white,
-                  paddingHorizontal: 20,
-                  marginTop: 20,
-                  alignSelf: "center",
-                  padding: 10,
-                  color: Colors.darkMode,
-                  marginVertical: 20,
-                }}
-              />
-            </View>
 
-            <View>
-              <TextInput
-                value={lastName}
-                onChangeText={setLastName}
-                keyboardType="default"
-                autoCapitalize="none"
-                placeholder="Last name "
-                placeholderTextColor={Colors.darkMode}
-                autoCorrect={false}
-                style={{
-                  width: "90%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: Colors.white,
-                  paddingHorizontal: 20,
-                  marginTop: 20,
-                  alignSelf: "center",
-                  padding: 10,
-                  color: Colors.darkMode,
-                  marginVertical: 20,
-                }}
-              />
-            </View>
-
-            <View>
-              <TextInput
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                placeholder="Email Address"
-                placeholderTextColor={Colors.darkMode}
-                autoCorrect={false}
-                style={{
-                  width: "90%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: Colors.white,
-                  paddingHorizontal: 20,
-                  marginTop: 20,
-                  alignSelf: "center",
-                  padding: 10,
-                  color: Colors.darkMode,
-                  marginVertical: 20,
-                }}
-              />
-            </View>
-
-            <View>
-              <Ionicons
-                name="lock-closed-outline"
-                size={22}
-                color="gray"
-                style={{
-                  position: "absolute",
-                  left: 18,
-                  top: 32,
-                  zIndex: 1,
-                  marginHorizontal: 10,
-                }}
-              />
-              <TextInput
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry={!showPassword}
-                keyboardType="numeric"
-                autoCapitalize="none"
-                placeholder="Password"
-                placeholderTextColor={Colors.darkMode}
-                autoCorrect={false}
-                style={{
-                  width: "90%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: Colors.white,
-                  paddingHorizontal: 20,
-                  marginTop: 20,
-                  alignSelf: "center",
-                  paddingLeft: 40,
-                  // marginBottom: 50,
-                  marginVertical: 20,
-                }}
-              />
-              {error ? (
-                <Text style={{ color: "red", textAlign: "center" }}>
-                  {error}
-                </Text>
-              ) : null}
-
-              <TouchableOpacity
-                style={{
-                  position: "absolute",
-                  right: 20,
-                  top: 30,
-                  padding: 5,
-                }}
-                onPress={() => setShowPassword((prev) => !prev)}
-              >
-                <Image
-                  source={showPassword ? eyeOpen : eyeClosed}
+        <ScrollView style={{ marginBottom: 100 }}>
+          <View style={styles.mainContainer}>
+            <View style={{ marginVertical: 1 }}>
+              <View>
+                <TextInput
+                  value={firstName}
+                  onChangeText={setFirstName}
+                  keyboardType="default"
+                  autoCapitalize="none"
+                  placeholder="First name (Surname)"
+                  placeholderTextColor={Colors.darkMode}
+                  autoCorrect={false}
                   style={{
-                    width: 24,
-                    height: 24,
+                    width: "90%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: Colors.white,
+                    paddingHorizontal: 20,
+                    marginTop: 20,
                     alignSelf: "center",
-                    justifyContent: "center",
-                    tintColor: "gray",
+                    padding: 10,
+                    color: Colors.darkMode,
+                    marginVertical: 20,
                   }}
-                  contentFit="contain"
                 />
-              </TouchableOpacity>
-            </View>
-            <TextInput
-              keyboardType="default"
-              autoCapitalize="none"
-              placeholder="Ener referral code (optional)"
-              placeholderTextColor={Colors.darkMode}
-              autoCorrect={false}
-              style={{
-                width: "90%",
-                height: 50,
-                borderRadius: 10,
-                backgroundColor: Colors.white,
-                paddingHorizontal: 20,
-                marginTop: 20,
-                alignSelf: "center",
-                padding: 10,
-                color: Colors.darkMode,
-                // marginVertical: 20,
-              }}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignSelf: "center",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ color: "white" }}>Step 1</Text>
+              </View>
 
-            <TouchableOpacity
-              style={{
-                padding: 15,
-              }}
-              onPress={() => router.navigate("./createPin")}
-            >
-              <Ionicons
-                name="arrow-forward-circle-outline"
-                size={30}
-                color={Colors.white}
+              <View>
+                <TextInput
+                  value={lastName}
+                  onChangeText={setLastName}
+                  keyboardType="default"
+                  autoCapitalize="none"
+                  placeholder="Last name "
+                  placeholderTextColor={Colors.darkMode}
+                  autoCorrect={false}
+                  style={{
+                    width: "90%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: Colors.white,
+                    paddingHorizontal: 20,
+                    marginTop: 20,
+                    alignSelf: "center",
+                    padding: 10,
+                    color: Colors.darkMode,
+                    marginVertical: 20,
+                  }}
+                />
+              </View>
+
+              <View>
+                <TextInput
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  placeholder="Email Address"
+                  placeholderTextColor={Colors.darkMode}
+                  autoCorrect={false}
+                  style={{
+                    width: "90%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: Colors.white,
+                    paddingHorizontal: 20,
+                    marginTop: 20,
+                    alignSelf: "center",
+                    padding: 10,
+                    color: Colors.darkMode,
+                    marginVertical: 20,
+                  }}
+                />
+              </View>
+
+              <View>
+                <Ionicons
+                  name="lock-closed-outline"
+                  size={22}
+                  color="gray"
+                  style={{
+                    position: "absolute",
+                    left: 18,
+                    top: 32,
+                    zIndex: 1,
+                    marginHorizontal: 10,
+                  }}
+                />
+                <TextInput
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry={!showPassword}
+                  keyboardType="numeric"
+                  autoCapitalize="none"
+                  placeholder="Password"
+                  placeholderTextColor={Colors.darkMode}
+                  autoCorrect={false}
+                  style={{
+                    width: "90%",
+                    height: 50,
+                    borderRadius: 10,
+                    backgroundColor: Colors.white,
+                    paddingHorizontal: 20,
+                    marginTop: 20,
+                    alignSelf: "center",
+                    paddingLeft: 40,
+                    // marginBottom: 50,
+                    marginVertical: 20,
+                  }}
+                />
+                {error ? (
+                  <Text style={{ color: "red", textAlign: "center" }}>
+                    {error}
+                  </Text>
+                ) : null}
+
+                <TouchableOpacity
+                  style={{
+                    position: "absolute",
+                    right: 20,
+                    top: 30,
+                    padding: 5,
+                  }}
+                  onPress={() => setShowPassword((prev) => !prev)}
+                >
+                  <Image
+                    source={showPassword ? eyeOpen : eyeClosed}
+                    style={{
+                      width: 24,
+                      height: 24,
+                      alignSelf: "center",
+                      justifyContent: "center",
+                      tintColor: "gray",
+                    }}
+                    contentFit="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+              <TextInput
+                keyboardType="default"
+                autoCapitalize="none"
+                placeholder="Ener referral code (optional)"
+                placeholderTextColor={Colors.darkMode}
+                autoCorrect={false}
+                style={{
+                  width: "90%",
+                  height: 50,
+                  borderRadius: 10,
+                  backgroundColor: Colors.white,
+                  paddingHorizontal: 20,
+                  marginTop: 20,
+                  alignSelf: "center",
+                  padding: 10,
+                  color: Colors.darkMode,
+                  // marginVertical: 20,
+                  marginBottom: 50,
+                }}
               />
-            </TouchableOpacity>
+            </View>
+
+            <CustonButton1
+              text={"Continue"}
+              onPress={() => {
+                // handle login action here
+                router.navigate("./createPin");
+              }}
+              color={Colors.Secondary}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ color: "white", marginBottom: 20 }}>Step 1</Text>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

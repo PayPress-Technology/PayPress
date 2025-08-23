@@ -65,7 +65,7 @@ export default function Login() {
               onPress={() => {
                 // handle login action here
 
-                router.navigate("");
+                router.navigate("./transactionScreens");
               }}
               color={Colors.Secondary}
             />
