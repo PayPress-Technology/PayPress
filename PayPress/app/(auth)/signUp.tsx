@@ -36,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, marginBottom: 50 }}>
+    <SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         // style={{ flex: 1 }}
@@ -79,7 +79,7 @@ export default function Login() {
           Register to start saving and investing with PAYpress today!
         </Text>
 
-        <ScrollView style={{ marginBottom: 100 }}>
+        <ScrollView>
           <View style={styles.mainContainer}>
             <View style={{ marginVertical: 1 }}>
               <View>

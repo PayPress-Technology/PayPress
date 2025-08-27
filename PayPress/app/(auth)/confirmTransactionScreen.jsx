@@ -27,7 +27,7 @@ const PinInputScreen = ({ onPinComplete }) => {
   const handleEnter = () => {
     if (pin.length === maxLength) {
       // Navigate to confirm transaction screen
-      router.push("/confirmTransactionScreen");
+      router.push("/biometricsSetup");
       if (onPinComplete) {
         onPinComplete(pin);
       }
@@ -89,17 +89,17 @@ const PinInputScreen = ({ onPinComplete }) => {
             marginHorizontal: 20,
           }}
         >
-          Create your 6-digit PIN
+          Confirm your 6-digit PIN
         </Text>
         <Text
           style={{
             textAlign: "left",
             fontFamily: "PoppinsRegular",
             marginHorizontal: 20,
-            marginBottom: 20,
+            marginBottom: 10,
           }}
         >
-          Create a PIN for your Paycoin
+          Retype the Paycoin PIN you entered earlier to confirm.
         </Text>
       </View>
       <View style={styles.content}>

@@ -54,13 +54,15 @@ export default function Login() {
                 text={"NOT NOW"}
                 onPress={() => {
                   // handle login action here
-                  router.navigate("");
+                  router.navigate("/login");
                 }}
                 color={Colors.white}
               />
             </View>
           </View>
         </View>
+        {/* Step Indicator */}
+        <Text style={styles.stepText}>Step 4</Text>
       </View>
     </SafeAreaView>
   );
@@ -88,5 +90,11 @@ const styles = StyleSheet.create({
     color: Colors.white,
     textAlign: "center",
     marginTop: 10,
+  },
+  stepText: {
+    color: Colors.white,
+    fontSize: 14,
+    textAlign: "center",
+    marginBottom: 20,
   },
 });

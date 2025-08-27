@@ -7,6 +7,8 @@ const AuthScreens = () => {
       <Stack.Screen name="signUp" />
       <Stack.Screen name="biometrics" />
       <Stack.Screen name="biometricsSetup" />
+      <Stack.Screen name="transactionScreen" />
+      <Stack.Screen name="confirmTransactionScreen" />
       <Stack.Screen name="Loginbiometrics" />
     </Stack>
   );
