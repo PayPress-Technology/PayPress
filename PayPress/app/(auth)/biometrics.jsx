@@ -96,7 +96,7 @@ export default function FingerprintSetup() {
               <CustonButton1
                 text={"Continue"}
                 // onPress={handleContinue}
-                onPress={() => router.push("/Home")}
+                onPress={() => router.navigate("/Home")}
                 color={Colors.Secondary}
               />
             ) : (

@@ -23,18 +23,29 @@ export default function RootLayout() {
     PoppinsExtraBold: require("../assets/fonts/Poppins-ExtraBold.ttf"),
   });
 
-  useEffect(() => {
-    // Hide splash screen after your app is ready
-    const hideSplashScreen = async () => {
-      // Add any loading logic here
-      await SplashScreen.hideAsync();
-    };
+  // useEffect(() => {
+  //   // Hide splash screen after your app is ready
+  //   const hideSplashScreen = async () => {
+  //     // Add any loading logic here
+  //     await SplashScreen.hideAsync();
+  //   };
 
-    hideSplashScreen();
-  }, []);
+  //   hideSplashScreen();
+  // }, []);
+
+  // if (!loaded) {
+
+  //   // Async font loading only occurs in development.
+  //   return null;
+  // }
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
 
   if (!loaded) {
-    // Async font loading only occurs in development.
+    // Don't hide splash screen here - let it stay visible
     return null;
   }
 
