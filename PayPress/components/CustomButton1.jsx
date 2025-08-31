@@ -17,7 +17,6 @@ export default CustonButton1;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "red",
     padding: 20,
     width: "90%",
     borderRadius: 5,

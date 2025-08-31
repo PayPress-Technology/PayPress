@@ -47,6 +47,9 @@ export default function HomeScreen() {
                 flexDirection: "row",
                 alignItems: "center",
               }}
+              onPress={() => {
+                router.push("/my_savings");
+              }}
             >
               <Ionicons
                 name="add"
@@ -279,7 +282,11 @@ export default function HomeScreen() {
             </View>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            router.push("../lockFund");
+          }}
+        >
           <View
             style={{
               flexDirection: "column",

@@ -170,6 +170,7 @@ export default function Login() {
               // handle login action here
               handleRegister();
               if (email && password) {
+                // router.navigate("/Home");
                 router.navigate("/Home");
               }
             }}
@@ -184,7 +185,8 @@ export default function Login() {
 
           <CustonButton1
             onPress={() => {
-              router.navigate("./Loginbiometrics");
+              // router.navigate("./Loginbiometrics");
+              router.navigate("./my_savings");
             }}
             text={
               <View

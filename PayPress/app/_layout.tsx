@@ -38,11 +38,11 @@ export default function RootLayout() {
   //   // Async font loading only occurs in development.
   //   return null;
   // }
-  // useEffect(() => {
-  //   if (loaded) {
-  //     SplashScreen.hideAsync();
-  //   }
-  // }, [loaded]);
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
 
   if (!loaded) {
     // Don't hide splash screen here - let it stay visible
@@ -60,6 +60,7 @@ export default function RootLayout() {
       <Stack.Screen name="(account)" />
       <Stack.Screen name="index" />
       <Stack.Screen name="+not-found" />
+      <Stack.Screen name="mySavings" />
     </Stack>
   );
 }
