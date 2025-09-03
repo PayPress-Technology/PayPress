@@ -60,6 +60,9 @@ export default function HomeScreen() {
               <Text>Quick Save</Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={() => {
+                router.push("/savingsDashboard");
+              }}
               style={{
                 backgroundColor: Colors.Secondary,
                 borderRadius: 15,
@@ -152,6 +155,25 @@ export default function HomeScreen() {
                 <View style={style.divider} />
               </View>
             </TouchableOpacity>
+
+            {/* Lock funds */}
+            <TouchableOpacity
+              onPress={() => {
+                router.push("../lockFund");
+              }}
+            >
+              <View style={style.cardConatiner}>
+                <View style={style.cardImgContainer}>
+                  <Image
+                    style={style.cardImg}
+                    source={require("../../assets/images/lockFunds.png")}
+                  />
+                  <Text style={style.cardTxt}>Lock {"\n"}Funds</Text>
+                </View>
+                <View style={style.divider} />
+              </View>
+            </TouchableOpacity>
+
             {/* Link Bank Card */}
             <TouchableOpacity>
               <View style={style.cardConatiner}>
@@ -196,6 +218,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
         </ScrollView>
+
         {/* other Services section */}
         <Text
           style={{
@@ -208,7 +231,7 @@ export default function HomeScreen() {
         >
           Other Services
         </Text>
-        <View style={style.cardImgContainer}>
+        <View style={[style.cardImgContainer, { marginBottom: 20 }]}>
           <TouchableOpacity>
             <View
               style={{
@@ -282,29 +305,7 @@ export default function HomeScreen() {
             </View>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            router.push("../lockFund");
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "column",
-              marginTop: 10,
-              marginLeft: 32,
-              // justifyContent: "center",
-              alignItems: "center",
-              alignSelf: "flex-start",
-            }}
-          >
-            <Image
-              resizeMode="contain"
-              style={style.otherServiceImg}
-              source={require("../../assets/images/lockFunds.png")}
-            />
-            <Text style={style.otherServiceTxt}> Lock Funds</Text>
-          </View>
-        </TouchableOpacity>
+
         {/* Saving plans section */}
         <View
           style={{

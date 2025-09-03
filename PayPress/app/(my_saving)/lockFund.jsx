@@ -20,7 +20,7 @@ import FundCards from "@/components/FundCards";
 import InputField from "@/components/InputField";
 import CustonButton1 from "@/components/CustomButton1";
 
-export default function MySavings() {
+export default function LockFunds() {
   const [autoDebitEnabled, setAutoDebitEnabled] = useState(false);
   const [showCustomForm, setShowCustomForm] = useState(false);
 
@@ -126,9 +126,9 @@ export default function MySavings() {
 
           {/* button */}
           <TouchableOpacity
-            // onPress={() => {
-            //   router.push();
-            // }}
+            onPress={() => {
+              router.navigate();
+            }}
             style={[
               style.button,
               { backgroundColor: Colors.Primary, marginTop: 20 },

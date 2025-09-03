@@ -185,8 +185,7 @@ export default function Login() {
 
           <CustonButton1
             onPress={() => {
-              // router.navigate("./Loginbiometrics");
-              router.navigate("./my_savings");
+              router.navigate("./Loginbiometrics");
             }}
             text={
               <View

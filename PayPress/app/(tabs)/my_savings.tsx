@@ -10,6 +10,7 @@ import {
   View,
   TextInput,
   ScrollView,
+  Switch,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
@@ -23,6 +24,10 @@ import CustonButton1 from "@/components/CustomButton1";
 export default function MySavings() {
   const [autoDebitEnabled, setAutoDebitEnabled] = useState(false);
   const [showCustomForm, setShowCustomForm] = useState(false);
+
+  const toggleAutoDebitEnabled = () => {
+    setAutoDebitEnabled((previousState) => !previousState);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -178,7 +183,7 @@ export default function MySavings() {
             </View>
           )}
 
-          <View style={style.dashContainer}>
+          <View style={[style.dashContainer, { marginTop: 20 }]}>
             {/* text */}
             <View>
               <Text
@@ -200,24 +205,24 @@ export default function MySavings() {
                 Automatically deduct monthly Amount
               </Text>
             </View>
-            {/* icon */}
+
+            {/* switch icon */}
             <View>
-              <TouchableOpacity
-                onPress={() => setAutoDebitEnabled((prev) => !prev)}
-              >
-                <Ionicons
-                  name={autoDebitEnabled ? "toggle" : "toggle-outline"}
-                  size={35}
-                  color={autoDebitEnabled ? "green" : "gray"}
-                />
-              </TouchableOpacity>
+              <Switch
+                style={style.switch}
+                trackColor={{ false: "#E0E0E0", true: "#0B57BD" }}
+                thumbColor={autoDebitEnabled ? "#FFFFFF" : "#FFFFFF"}
+                ios_backgroundColor="#E0E0E0"
+                onValueChange={toggleAutoDebitEnabled}
+                value={autoDebitEnabled}
+              />
             </View>
           </View>
 
           {/* button */}
           <TouchableOpacity
             onPress={() => {
-              router.push("../savingPlan");
+              router.push("../savingsDashboard");
             }}
             style={[
               style.button,
@@ -288,5 +293,8 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsBold",
 
     color: Colors.white,
+  },
+  switch: {
+    transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
   },
 });
