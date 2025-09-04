@@ -127,7 +127,7 @@ export default function LockFunds() {
           {/* button */}
           <TouchableOpacity
             onPress={() => {
-              router.navigate();
+              router.navigate("./lockDashboard");
             }}
             style={[
               style.button,

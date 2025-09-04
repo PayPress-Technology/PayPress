@@ -6,7 +6,7 @@ const mySavings = () => {
       <Stack.Screen name="mySavings" />
       <Stack.Screen name="savingPlan" />
       <Stack.Screen name="lockFund" />
-      <Stack.Screen name="lockFundDashboard" />
+      <Stack.Screen name="lockDashboard" />
     </Stack>
   );
 };
