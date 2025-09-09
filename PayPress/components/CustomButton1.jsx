@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Colors } from "../constants/Colors";
 
-const CustonButton1 = ({ text, onPress, color }) => {
+const CustonButton1 = ({ text, onPress, color, TxtColor }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.button, { backgroundColor: color }]}
     >
-      <Text style={styles.mainTxt}>{text}</Text>
+      <Text style={[styles.mainTxt, { color: TxtColor }]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -17,8 +17,8 @@ export default CustonButton1;
 
 const styles = StyleSheet.create({
   button: {
-    padding: 20,
-    width: "90%",
+    padding: 10,
+    width: "80%",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
@@ -32,7 +32,5 @@ const styles = StyleSheet.create({
   mainTxt: {
     fontSize: 16,
     fontFamily: "PoppinsBold",
-
-    color: Colors.darkMode,
   },
 });

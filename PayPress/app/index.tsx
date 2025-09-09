@@ -119,6 +119,7 @@ const Index = () => {
             text={"Create Account"}
             onPress={() => router.navigate("./signUp")}
             color="#FFD700"
+            TxtColor={Colors.darkMode}
           />
         </View>
 
@@ -127,6 +128,7 @@ const Index = () => {
             text={"Login"}
             onPress={() => router.navigate("./login")}
             color={Colors.white}
+            TxtColor={Colors.darkMode}
           />
         </View>
       </View>

@@ -137,18 +137,22 @@ export default function SavingsDashboard() {
                 },
               ]}
             >
-              <View style={{ flexDirection: "row", gap: 5 }}>
+              <View style={{ flexDirection: "row", gap: 2 }}>
                 <View
                   style={{
-                    padding: 4,
+                    padding: 2,
                     borderRadius: 20,
-                    borderWidth: 1,
                     borderColor: Colors.white,
-
-                    outlineColor: "white",
                   }}
                 >
-                  <Ionicons name="play" size={10} color={Colors.white} />
+                  <Image
+                    source={require("../../assets/images/play-circle.png")}
+                    style={{
+                      resizeMode: "contain",
+                      width: 16,
+                      height: 16,
+                    }}
+                  />
                 </View>
                 <View>
                   <Text
@@ -265,18 +269,22 @@ export default function SavingsDashboard() {
                 },
               ]}
             >
-              <View style={{ flexDirection: "row", gap: 5 }}>
+              <View style={{ flexDirection: "row", gap: 2 }}>
                 <View
                   style={{
-                    padding: 4,
+                    padding: 2,
                     borderRadius: 20,
-                    borderWidth: 1,
                     borderColor: Colors.white,
-
-                    outlineColor: "white",
                   }}
                 >
-                  <Ionicons name="pause" size={10} color={Colors.white} />
+                  <Image
+                    source={require("../../assets/images/pause-circle.png")}
+                    style={{
+                      resizeMode: "contain",
+                      width: 16,
+                      height: 16,
+                    }}
+                  />{" "}
                 </View>
                 <View>
                   <Text

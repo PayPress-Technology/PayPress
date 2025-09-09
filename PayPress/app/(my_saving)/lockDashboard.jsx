@@ -395,8 +395,8 @@ const styles = StyleSheet.create({
     fontFamily: "PoppinsMedium",
   },
   button: {
-    padding: 20,
-    width: "95%",
+    padding: 10,
+    width: "80%",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",

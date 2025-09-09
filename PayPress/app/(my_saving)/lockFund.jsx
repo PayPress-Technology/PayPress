@@ -125,17 +125,15 @@ export default function LockFunds() {
           </View>
 
           {/* button */}
-          <TouchableOpacity
+
+          <CustonButton1
+            text={"Lock Funds Now"}
             onPress={() => {
               router.navigate("./lockDashboard");
             }}
-            style={[
-              style.button,
-              { backgroundColor: Colors.Primary, marginTop: 20 },
-            ]}
-          >
-            <Text style={style.mainTxt}>Lock Funds Now</Text>
-          </TouchableOpacity>
+            color={Colors.Primary}
+            TxtColor={Colors.white}
+          />
         </ScrollView>
       </View>
     </SafeAreaView>

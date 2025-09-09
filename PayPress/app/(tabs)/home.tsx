@@ -38,6 +38,22 @@ export default function HomeScreen() {
           style={style.dash_image}
           resizeMode="cover"
         >
+          <Image
+            source={require("../../assets/images/dash_star.png")}
+            style={{
+              width: 44,
+              height: 44,
+              position: "absolute",
+              top: 50,
+              right: "60%",
+            }}
+            resizeMode="contain"
+          />
+          <Image
+            source={require("../../assets/images/dash_star.png")}
+            style={{ width: 44, height: 44, position: "absolute", top: 65 }}
+            resizeMode="contain"
+          />
           <View style={style.buttonRow}>
             <TouchableOpacity
               style={{
@@ -334,17 +350,7 @@ export default function HomeScreen() {
           <View style={style.mainSavingsCardContainer}>
             {/* health savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#CCFDC7",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#CCFDC7" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/health_savings.png")}
@@ -352,19 +358,10 @@ export default function HomeScreen() {
                 <Text style={style.savingsTxt}>Health Savings</Text>
               </View>
             </TouchableOpacity>
+
             {/* Education Savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#E5F6FF",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#E5F6FF" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/education.png")}
@@ -372,19 +369,10 @@ export default function HomeScreen() {
                 <Text style={style.savingsTxt}>Education {"\n"} Savings</Text>
               </View>
             </TouchableOpacity>
+
             {/* Rent savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#FFEEBE",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#FFEEBE" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/rent.png")}
@@ -392,19 +380,10 @@ export default function HomeScreen() {
                 <Text style={style.savingsTxt}>Rent {"\n"} Savings</Text>
               </View>
             </TouchableOpacity>
+
             {/* Wedding savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#F6D5D5",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#F6D5D5" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/wedding_saving.png")}
@@ -415,17 +394,7 @@ export default function HomeScreen() {
 
             {/* Real estate savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#CBC3F8",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#CBC3F8" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/real_estate_savings.png")}
@@ -436,17 +405,7 @@ export default function HomeScreen() {
 
             {/* customize savings */}
             <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: "#9DBCE5",
-                  width: 103,
-                  height: 98,
-                  borderRadius: 6,
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <View style={[style.SavingCards, { backgroundColor: "#9DBCE5" }]}>
                 <Image
                   style={{ width: 35, height: 46 }}
                   source={require("../../assets/images/create_your_own_plan.png")}
@@ -456,6 +415,7 @@ export default function HomeScreen() {
                 </Text>
               </View>
             </TouchableOpacity>
+
             {/* End of saving... */}
           </View>
         </ScrollView>
@@ -951,7 +911,7 @@ const style = StyleSheet.create({
   cardConatiner: {
     backgroundColor: Colors.white,
     width: 144,
-    height: 90,
+    height: 84,
     borderRadius: 15,
     marginHorizontal: 10,
     shadowColor: "#000",
@@ -1006,6 +966,14 @@ const style = StyleSheet.create({
     alignContent: "center",
     alignSelf: "center",
     alignItems: "center",
+  },
+  SavingCards: {
+    width: 103,
+    height: 98,
+    borderRadius: 6,
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
   },
   savingsTxt: {
     fontSize: 10,

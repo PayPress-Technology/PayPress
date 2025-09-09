@@ -30,7 +30,7 @@ export default function MySavings() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
       <Text style={style.headingTxt}>Create Saving Plan</Text>
 
       {/* dash... */}
@@ -84,7 +84,7 @@ export default function MySavings() {
         </Text>
 
         <ScrollView
-          style={{ marginBottom: 250 }}
+          style={{ marginBottom: 10 }}
           showsVerticalScrollIndicator={false}
         >
           {/* types */}
@@ -145,9 +145,16 @@ export default function MySavings() {
                 text2={"3.8% APY"}
                 imageIcon={require("../../assets/images/agric_savings.png")}
               />
-              <SavingType
+              {/* <SavingType
                 onPress={() => setShowCustomForm((prev) => !prev)}
                 text={"Customize Savings Plan"}
+                text2={"3.8% APY"}
+                imageIcon={require("../../assets/images/custom_savings.png")}
+              /> */}
+
+              <SavingType
+                onPress={() => setShowCustomForm((prev) => !prev)}
+                text={"Customize Savings\nPlan"}
                 text2={"3.8% APY"}
                 imageIcon={require("../../assets/images/custom_savings.png")}
               />
@@ -155,82 +162,85 @@ export default function MySavings() {
           </View>
 
           {/* Customizing forms */}
-          {showCustomForm && (
-            <View style={style.inputContainer}>
-              <InputField
-                mainTxt={"Customise Plan Name"}
-                holder={"Enter your customise plan name"}
-                txtType={"default"}
-              />
-
-              <InputField
-                mainTxt={"Target Amount (₦)"}
-                holder={"How much do you want to save?"}
-                txtType={"numeric"}
-              />
-
-              <InputField
-                mainTxt={"Duration (Months)"}
-                holder={"How many months to save?"}
-                txtType={"numeric"}
-              />
-
-              <InputField
-                mainTxt={"Monthly Debit"}
-                holder={"How much should be debited monthly?"}
-                txtType={"numeric"}
-              />
-            </View>
-          )}
-
-          <View style={[style.dashContainer, { marginTop: 20 }]}>
-            {/* text */}
-            <View>
-              <Text
-                style={{
-                  fontSize: 14,
-                  marginBottom: 10,
-                  fontFamily: "PoppinsMedium",
-                }}
-              >
-                Enable Auto Debit
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "PoppinsRegular",
-                  fontSize: 14,
-                  color: "#7F7F7F",
-                }}
-              >
-                Automatically deduct monthly Amount
-              </Text>
-            </View>
-
-            {/* switch icon */}
-            <View>
-              <Switch
-                style={style.switch}
-                trackColor={{ false: "#E0E0E0", true: "#0B57BD" }}
-                thumbColor={autoDebitEnabled ? "#FFFFFF" : "#FFFFFF"}
-                ios_backgroundColor="#E0E0E0"
-                onValueChange={toggleAutoDebitEnabled}
-                value={autoDebitEnabled}
-              />
-            </View>
-          </View>
-
-          {/* button */}
-          <TouchableOpacity
-            onPress={() => {
-              router.push("../savingsDashboard");
-            }}
-            style={[
-              style.button,
-              { backgroundColor: Colors.Primary, marginTop: 20 },
-            ]}
+          <ScrollView
+            style={{ marginBottom: 50, flex: 1 }}
+            showsVerticalScrollIndicator={false}
           >
-            <Text style={style.mainTxt}>Create a Saving Plan</Text>
-          </TouchableOpacity>
+            {" "}
+            {showCustomForm && (
+              <View style={style.inputContainer}>
+                <InputField
+                  mainTxt={"Customise Plan Name"}
+                  holder={"Enter your customise plan name"}
+                  txtType={"default"}
+                />
+
+                <InputField
+                  mainTxt={"Target Amount (₦)"}
+                  holder={"How much do you want to save?"}
+                  txtType={"numeric"}
+                />
+
+                <InputField
+                  mainTxt={"Duration (Months)"}
+                  holder={"How many months to save?"}
+                  txtType={"numeric"}
+                />
+
+                <InputField
+                  mainTxt={"Monthly Debit"}
+                  holder={"How much should be debited monthly?"}
+                  txtType={"numeric"}
+                />
+              </View>
+            )}
+            <View style={[style.dashContainer, { marginTop: 20 }]}>
+              {/* text */}
+              <View>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    marginBottom: 10,
+                    fontFamily: "PoppinsMedium",
+                  }}
+                >
+                  Enable Auto Debit
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "PoppinsRegular",
+                    fontSize: 14,
+                    color: "#7F7F7F",
+                  }}
+                >
+                  Automatically deduct monthly Amount
+                </Text>
+              </View>
+
+              {/* switch icon */}
+              <View>
+                <Switch
+                  style={style.switch}
+                  trackColor={{ false: "#E0E0E0", true: "#0B57BD" }}
+                  thumbColor={autoDebitEnabled ? "#FFFFFF" : "#FFFFFF"}
+                  ios_backgroundColor="#E0E0E0"
+                  onValueChange={toggleAutoDebitEnabled}
+                  value={autoDebitEnabled}
+                />
+              </View>
+            </View>
+            {/* button */}
+            <View style={{ marginTop: 20 }}>
+              <CustonButton1
+                color={Colors.Primary}
+                text={"Create a Saving Plan"}
+                TxtColor={Colors.white}
+                onPress={() => {
+                  router.push("../savingsDashboard");
+                }}
+              />
+            </View>
+          </ScrollView>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -263,30 +273,26 @@ const style = StyleSheet.create({
   savingTypeContainer: {
     backgroundColor: "#EEEEEE]",
     marginTop: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 10,
   },
   savingTypes: {
     flexDirection: "row",
     justifyContent: "space-between",
-
+    gap: 10,
     marginTop: 10,
+    marginHorizontal: 10,
   },
   inputContainer: {
     marginTop: 20,
   },
   scroll: {},
   button: {
-    padding: 20,
-    width: "99%",
+    padding: 10,
+    width: "80%",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 5 },
-    // shadowOpacity: 0.15,
-    // shadowRadius: 6,
-    // elevation: 8,
   },
   mainTxt: {
     fontSize: 16,

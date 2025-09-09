@@ -18,7 +18,6 @@ import CustomSplashScreen from "../components/CustomSplashScreen";
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [appIsReady, setAppIsReady] = useState(false);
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     PoppinsBold: require("../assets/fonts/Poppins-Bold.ttf"),
@@ -28,36 +27,30 @@ export default function RootLayout() {
     PoppinsExtraBold: require("../assets/fonts/Poppins-ExtraBold.ttf"),
   });
 
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Keep the splash screen visible while we fetch resources
-        await SplashScreen.preventAutoHideAsync();
-        
-        // Any other initialization tasks can go here
-        
-        // When everything is ready, set appIsReady to true
-        if (loaded) {
-          setAppIsReady(true);
-        }
-      } catch (e) {
-        console.warn(e);
-      }
-    }
+  // useEffect(() => {
+  //   // Hide splash screen after your app is ready
+  //   const hideSplashScreen = async () => {
+  //     // Add any loading logic here
+  //     await SplashScreen.hideAsync();
+  //   };
 
-    prepare();
-  }, [loaded]);
+  //   hideSplashScreen();
+  // }, []);
 
+  // if (!loaded) {
+
+  //   // Async font loading only occurs in development.
+  //   return null;
+  // }
   useEffect(() => {
-    if (appIsReady) {
-      // This tells the splash screen to hide immediately
+    if (loaded) {
       SplashScreen.hideAsync();
     }
-  }, [appIsReady]);
+  }, [loaded]);
 
-  if (!appIsReady) {
-    // If the app is not ready yet, show our custom splash screen
-    return <CustomSplashScreen />;
+  if (!loaded) {
+    // Don't hide splash screen here - let it stay visible
+    return null;
   }
 
   return (

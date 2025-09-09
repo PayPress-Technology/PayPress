@@ -6,13 +6,15 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 
 const PinInputScreen = ({ onPinComplete }) => {
   const [pin, setPin] = useState("");
-  const maxLength = 6; // 6-digit PIN
+  const [error, setError] = useState("");
+  const { originalPin } = useLocalSearchParams();
+  const maxLength = 5; // 6-digit PIN
 
   const handleNumberPress = (number) => {
     if (pin.length < maxLength) {
@@ -25,13 +27,17 @@ const PinInputScreen = ({ onPinComplete }) => {
   };
 
   const handleEnter = () => {
-    if (pin.length === maxLength) {
-      // Navigate to confirm transaction screen
+    if (pin == originalPin) {
+      // setPin(pin + number);
       router.push("/biometricsSetup");
-      if (onPinComplete) {
-        onPinComplete(pin);
-      }
+    } else {
+      // Error when PINs don't match
+      setError("PINs do not match. Please try again.");
     }
+    // if (onPinComplete) {
+    //   onPinComplete(pin);
+    // }
+    setPin("");
   };
 
   const renderPinInput = () => {
@@ -62,6 +68,9 @@ const PinInputScreen = ({ onPinComplete }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Error message */}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+
       <View style={{ backgroundColor: Colors.white }}>
         {/* Back Icon */}
         <TouchableOpacity
@@ -89,7 +98,7 @@ const PinInputScreen = ({ onPinComplete }) => {
             marginHorizontal: 20,
           }}
         >
-          Confirm your 6-digit PIN
+          Confirm your 5-digit PIN
         </Text>
         <Text
           style={{
@@ -184,7 +193,7 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 40,
+    paddingTop: 20,
     backgroundColor: Colors.Primary,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
@@ -304,6 +313,14 @@ const styles = StyleSheet.create({
   },
   enterButtonTextDisabled: {
     color: "#CCCCCC",
+  },
+  errorText: {
+    color: "red",
+    fontSize: 14,
+    textAlign: "center",
+    marginHorizontal: 20,
+    // marginBottom: 20,
+    fontFamily: "PoppinsRegular",
   },
 });
 

@@ -76,7 +76,7 @@ export default function Login() {
               style={{
                 position: "absolute",
                 right: 100,
-                top: 20,
+                top: 10,
                 zIndex: 1,
                 marginHorizontal: 10,
               }}

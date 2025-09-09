@@ -12,7 +12,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 const PinInputScreen = ({ onPinComplete }) => {
   const [pin, setPin] = useState("");
-  const maxLength = 6; // 6-digit PIN
+  const [error, setError] = useState("");
+  const maxLength = 5; // 6-digit PIN
 
   const handleNumberPress = (number) => {
     if (pin.length < maxLength) {
@@ -27,11 +28,16 @@ const PinInputScreen = ({ onPinComplete }) => {
   const handleEnter = () => {
     if (pin.length === maxLength) {
       // Navigate to confirm transaction screen
-      router.push("/confirmTransactionScreen");
+      // router.push("/confirmTransactionScreen");
+      router.push({
+        pathname: "/confirmTransactionScreen",
+        params: { originalPin: pin },
+      });
       if (onPinComplete) {
         onPinComplete(pin);
       }
     }
+    setPin("");
   };
 
   const renderPinInput = () => {
@@ -89,7 +95,7 @@ const PinInputScreen = ({ onPinComplete }) => {
             marginHorizontal: 20,
           }}
         >
-          Create your 6-digit PIN
+          Create your 5-digit PIN
         </Text>
         <Text
           style={{
