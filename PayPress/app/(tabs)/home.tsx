@@ -159,7 +159,11 @@ export default function HomeScreen() {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={style.mainCardContainer}>
             {/* BVN Card */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push("../addBVN");
+              }}
+            >
               <View style={style.cardConatiner}>
                 <View style={style.cardImgContainer}>
                   <Image
