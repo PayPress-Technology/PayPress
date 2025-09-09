@@ -195,7 +195,11 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* Link Bank Card */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push("../linkBank");
+              }}
+            >
               <View style={style.cardConatiner}>
                 <View style={style.cardImgContainer}>
                   <Image

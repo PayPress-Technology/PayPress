@@ -4,6 +4,7 @@ const toDoScreens = () => {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="addBVN" />
+      <Stack.Screen name="linkBank" />
     </Stack>
   );
 };
