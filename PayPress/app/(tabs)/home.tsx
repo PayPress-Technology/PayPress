@@ -141,20 +141,21 @@ export default function HomeScreen() {
         </ImageBackground>
       </View>
       {/* TO_DO */}
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginHorizontal: 20,
-          marginTop: 10,
-        }}
-      >
-        <Text style={style.toDo_Txt}>To-do lists</Text>
-        <TouchableOpacity>
-          <Text style={style.toDo_Txt}>Hide {">"}</Text>
-        </TouchableOpacity>
-      </View>
       <ScrollView style={{ marginBottom: 50 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginHorizontal: 20,
+            marginTop: 10,
+          }}
+        >
+          <Text style={style.toDo_Txt}>To-do lists</Text>
+          <TouchableOpacity>
+            <Text style={style.toDo_Txt}>Hide {">"}</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Card Items */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={style.mainCardContainer}>
@@ -170,7 +171,7 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/addBVN.png")}
                   />
-                  <Text style={style.cardTxt}>Add your {"\n"} BVN</Text>
+                  <Text style={style.cardTxt}>Add your {"\n"}BVN</Text>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -206,9 +207,7 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/linkBank.png")}
                   />
-                  <Text style={style.cardTxt}>
-                    Link Bank {"\n"} or ATM Card
-                  </Text>
+                  <Text style={style.cardTxt}>Link{"\n"}Bank...</Text>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -222,7 +221,7 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/uploadPic.png")}
                   />
-                  <Text style={style.cardTxt}>Upload a {"\n"} Picture</Text>
+                  <Text style={style.cardTxt}>Upload a {"\n"}Picture</Text>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -235,7 +234,7 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/addBVN.png")}
                   />
-                  <Text style={style.cardTxt}>Approve {"\n"} Device</Text>
+                  <Text style={style.cardTxt}>Approve{"\n"}Device</Text>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -353,6 +352,7 @@ export default function HomeScreen() {
             </Text>
           </TouchableOpacity>
         </View>
+
         {/* saving card */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={style.mainSavingsCardContainer}>
@@ -360,7 +360,7 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#CCFDC7" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/health_savings.png")}
                 />
                 <Text style={style.savingsTxt}>Health Savings</Text>
@@ -371,7 +371,7 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#E5F6FF" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/education.png")}
                 />
                 <Text style={style.savingsTxt}>Education {"\n"} Savings</Text>
@@ -382,7 +382,7 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#FFEEBE" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/rent.png")}
                 />
                 <Text style={style.savingsTxt}>Rent {"\n"} Savings</Text>
@@ -393,7 +393,7 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#F6D5D5" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/wedding_saving.png")}
                 />
                 <Text style={style.savingsTxt}>Wedding {"\n"} Savings</Text>
@@ -404,7 +404,7 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#CBC3F8" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/real_estate_savings.png")}
                 />
                 <Text style={style.savingsTxt}>Real Estate {"\n"} Savings</Text>
@@ -415,12 +415,10 @@ export default function HomeScreen() {
             <TouchableOpacity>
               <View style={[style.SavingCards, { backgroundColor: "#9DBCE5" }]}>
                 <Image
-                  style={{ width: 35, height: 46 }}
+                  style={style.savingsImg}
                   source={require("../../assets/images/create_your_own_plan.png")}
                 />
-                <Text style={style.savingsTxt}>
-                  Create your own {"\n"}plan{" "}
-                </Text>
+                <Text style={style.savingsTxt}>Create your own plan</Text>
               </View>
             </TouchableOpacity>
 
@@ -918,8 +916,8 @@ const style = StyleSheet.create({
   },
   cardConatiner: {
     backgroundColor: Colors.white,
-    width: 144,
-    height: 84,
+    width: 116,
+    height: 66,
     borderRadius: 15,
     marginHorizontal: 10,
     shadowColor: "#000",
@@ -935,8 +933,8 @@ const style = StyleSheet.create({
     marginTop: 8,
   },
   cardImg: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     resizeMode: "contain",
     marginBottom: 5,
     justifyContent: "center",
@@ -976,17 +974,21 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   SavingCards: {
-    width: 103,
-    height: 98,
+    width: 65,
+    height: 60,
     borderRadius: 6,
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
   },
   savingsTxt: {
-    fontSize: 10,
+    fontSize: 9,
     fontFamily: "PoppinsRegular",
     textAlign: "center",
+  },
+  savingsImg: {
+    width: 19.4,
+    height: 24,
   },
   slidingCard: {
     width: 289,

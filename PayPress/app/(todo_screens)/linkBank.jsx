@@ -53,7 +53,7 @@ export default function addBVN() {
 
         {/* Bank buttons */}
         <CustonButton1
-          text={"Link You Bank"}
+          text={"Link Your Bank"}
           onPress={() => {
             // router.navigate();
           }}

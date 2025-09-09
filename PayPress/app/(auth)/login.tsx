@@ -193,6 +193,7 @@ export default function Login() {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "center",
+                  gap: 5,
                 }}
               >
                 <Text
@@ -204,16 +205,36 @@ export default function Login() {
                 >
                   Log in with Biometrics
                 </Text>
-                <Ionicons
-                  name="finger-print"
-                  size={20}
-                  color="gray"
-                  style={{ marginLeft: 8 }}
+
+                <Image
+                  source={require("../../assets/images/fingerprint-scan.png")}
+                  style={{ resizeMode: "contain", height: 24, width: 24 }}
                 />
               </View>
             }
             color={Colors.white}
           />
+
+          {/* signup text */}
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 5,
+              justifyContent: "center",
+              marginTop: 10,
+            }}
+          >
+            <Text style={{ color: Colors.white }}>Not yet Registered?</Text>
+            <TouchableOpacity
+              onPress={() => {
+                router.navigate("/signUp");
+              }}
+            >
+              <Text style={{ color: Colors.white, fontFamily: "PoppinsBold" }}>
+                Sign Up
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
