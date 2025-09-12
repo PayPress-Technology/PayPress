@@ -3,20 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 import { Colors } from "../constants/Colors";
 
-const SavingType = ({ text, text2, onPress, imageIcon }) => {
+const SavingType = ({ text, text2, onPress, imageIcon, active }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View
-        style={{
-          height: 55,
-          width: 150,
-          borderRadius: 8,
-          backgroundColor: "#DFDEDE",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingHorizontal: 10,
-        }}
+        style={[
+          styles.container,
+          active && { borderWidth: 2, borderColor: Colors.Primary },
+        ]}
       >
         <View>
           <Text style={{ color: Colors.darkMode, fontSize: 12 }}>{text}</Text>
@@ -51,5 +45,14 @@ const SavingType = ({ text, text2, onPress, imageIcon }) => {
 export default SavingType;
 
 const styles = StyleSheet.create({
-  button: {},
+  container: {
+    height: 55,
+    width: 150,
+    borderRadius: 8,
+    backgroundColor: "#DFDEDE",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
 });

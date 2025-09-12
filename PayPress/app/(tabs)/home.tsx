@@ -6,17 +6,17 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image,
   ImageBackground,
   ScrollView,
   Pressable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import styles from "../styles";
+import { Image } from "expo-image";
 
 export default function HomeScreen() {
   return (
@@ -255,7 +255,11 @@ export default function HomeScreen() {
           Other Services
         </Text>
         <View style={[style.cardImgContainer, { marginBottom: 20 }]}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              router.navigate("../scratchCard");
+            }}
+          >
             <View
               style={{
                 flexDirection: "column",

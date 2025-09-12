@@ -11,6 +11,7 @@ import {
   TextInput,
   ScrollView,
   Switch,
+  KeyboardAvoidingView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
@@ -24,176 +25,232 @@ import CustonButton1 from "@/components/CustomButton1";
 export default function MySavings() {
   const [autoDebitEnabled, setAutoDebitEnabled] = useState(false);
   const [showCustomForm, setShowCustomForm] = useState(false);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const accntBalance = " ₦25,000.00";
 
   const toggleAutoDebitEnabled = () => {
     setAutoDebitEnabled((previousState) => !previousState);
   };
 
   return (
-    <SafeAreaView>
-      <Text style={style.headingTxt}>Create Saving Plan</Text>
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        keyboardVerticalOffset={80} // adjust if header overlaps
+      >
+        <Text style={style.headingTxt}>Create Saving Plan</Text>
 
-      {/* dash... */}
-      <View style={style.dash_Container}>
-        <ImageBackground
-          source={require("../../assets/images/savings_bg.png")}
-          style={style.dash_image}
-          resizeMode="cover"
-        >
-          <View style={style.dashContainer}>
-            {/* text */}
-            <View>
-              <Text
-                style={{ color: Colors.white, fontSize: 12, marginBottom: 10 }}
-              >
-                Current Wallet Balance
-              </Text>
-              <Text
-                style={{
-                  color: Colors.white,
-                  fontFamily: "PoppinsBold",
-                  fontSize: 18,
-                }}
-              >
-                ₦25,000.00
-              </Text>
-            </View>
-            {/* icon */}
-            <View>
-              <TouchableOpacity>
-                {" "}
-                <Image
+        {/* dash... */}
+        <View style={style.dash_Container}>
+          <ImageBackground
+            source={require("../../assets/images/savings_bg.png")}
+            style={style.dash_image}
+            resizeMode="cover"
+          >
+            <View style={style.dashContainer}>
+              {/* text */}
+              <View>
+                <Text
                   style={{
-                    resizeMode: "contain",
-                    width: 38,
-                    height: 38,
+                    color: Colors.white,
+                    fontSize: 12,
+                    marginBottom: 10,
                   }}
-                  source={require("../../assets/images/wallet-line.png")}
-                />
-              </TouchableOpacity>
+                >
+                  Current Wallet Balance
+                </Text>
+                <Text
+                  style={{
+                    color: Colors.white,
+                    fontFamily: "PoppinsBold",
+                    fontSize: 18,
+                  }}
+                >
+                  {accntBalance}
+                </Text>
+              </View>
+              {/* icon */}
+              <View>
+                <TouchableOpacity>
+                  {" "}
+                  <Image
+                    style={{
+                      resizeMode: "contain",
+                      width: 38,
+                      height: 38,
+                    }}
+                    source={require("../../assets/images/wallet-line.png")}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ImageBackground>
-      </View>
-      {/* End of dash... */}
+          </ImageBackground>
+        </View>
+        {/* End of dash... */}
 
-      {/* Saving Types Section */}
-      <View style={style.savingTypeContainer}>
-        <Text style={[style.headingTxt, { fontSize: 16, paddingRight: 20 }]}>
-          Select Saving Type
-        </Text>
-
+        {/* Saving Types Section */}
         <ScrollView
-          style={{ marginBottom: 10 }}
+          contentContainerStyle={{ paddingBottom: 100 }}
           showsVerticalScrollIndicator={false}
         >
-          {/* types */}
-          <View style={style.dash_Container}>
-            {/* 1st two */}
-            <View style={style.savingTypes}>
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Health Savings"}
-                text2={"4.5% APY"}
-                imageIcon={require("../../assets/images/health.png")}
-              />
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Rent Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/rentSavings.png")}
-              />
-            </View>
+          <View style={style.savingTypeContainer}>
+            <Text
+              style={[style.headingTxt, { fontSize: 16, paddingRight: 20 }]}
+            >
+              Select Saving Type
+            </Text>
+            {/* types */}
+            <View style={style.dash_Container}>
+              {/* 1st two */}
+              <View style={style.savingTypes}>
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Health Savings")}
+                  text={"Health Savings"}
+                  text2={"4.5% APY"}
+                  imageIcon={require("../../assets/images/health.png")}
+                  active={selectedType === "Health Savings"}
+                />
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Rent Savings")}
+                  text={"Rent Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/rentSavings.png")}
+                  active={selectedType === "Rent Savings"}
+                />
+              </View>
 
-            {/* 2nd  */}
-            <View style={style.savingTypes}>
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Education Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/education_savings.png")}
-              />
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Real Estate Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/real_estate.png")}
-              />
-            </View>
+              {/* 2nd  */}
+              <View style={style.savingTypes}>
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Education Savings")}
+                  text={"Education Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/education_savings.png")}
+                  active={selectedType === "Education Savings"}
+                />
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Real Estate Savings")}
+                  text={"Real Estate Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/real_estate.png")}
+                  active={selectedType === "Real Estate Savings"}
+                />
+              </View>
 
-            {/*3rd   */}
-            <View style={style.savingTypes}>
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Wedding Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/weddinig_savings.png")}
-              />
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Travelling Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/traveling_savings.png")}
-              />
-            </View>
+              {/*3rd   */}
+              <View style={style.savingTypes}>
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Wedding Savings")}
+                  text={"Wedding Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/weddinig_savings.png")}
+                  active={selectedType === "Wedding Savings"}
+                />
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Travelling Savings")}
+                  text={"Travelling Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/traveling_savings.png")}
+                  active={selectedType === "Travelling Savings"}
+                />
+              </View>
 
-            {/* 4th */}
-            <View style={style.savingTypes}>
-              <SavingType
-                onPress={() => router.push("/my_savings")}
-                text={"Agriculture Savings"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/agric_savings.png")}
-              />
-              {/* <SavingType
-                onPress={() => setShowCustomForm((prev) => !prev)}
-                text={"Customize Savings Plan"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/custom_savings.png")}
-              /> */}
+              {/* 4th */}
+              <View style={style.savingTypes}>
+                <SavingType
+                  // onPress={() => router.push("/my_savings")}
+                  onPress={() => setSelectedType("Agriculture Savings")}
+                  text={"Agriculture Savings"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/agric_savings.png")}
+                  active={selectedType === "Agriculture Savings"}
+                />
 
-              <SavingType
-                onPress={() => setShowCustomForm((prev) => !prev)}
-                text={"Customize Savings\nPlan"}
-                text2={"3.8% APY"}
-                imageIcon={require("../../assets/images/custom_savings.png")}
-              />
-            </View>
-          </View>
+                <SavingType
+                  onPress={() => {
+                    setShowCustomForm((prev) => !prev);
+                    setSelectedType("Customize Savings");
+                  }}
+                  text={"Customize Savings\nPlan"}
+                  text2={"3.8% APY"}
+                  imageIcon={require("../../assets/images/custom_savings.png")}
+                  active={selectedType === "Customize Savings"}
+                />
+              </View>
 
-          {/* Customizing forms */}
-          <ScrollView
-            style={{ marginBottom: 50, flex: 1 }}
-            showsVerticalScrollIndicator={false}
-          >
-            {" "}
-            {showCustomForm && (
-              <View style={style.inputContainer}>
+              {/* Fields */}
+              <View style={{ marginTop: 20 }}>
                 <InputField
-                  mainTxt={"Customise Plan Name"}
-                  holder={"Enter your customise plan name"}
+                  mainTxt={selectedType}
+                  holder={selectedType}
                   txtType={"default"}
+                  edit={false}
                 />
 
                 <InputField
                   mainTxt={"Target Amount (₦)"}
-                  holder={"How much do you want to save?"}
+                  holder={accntBalance}
                   txtType={"numeric"}
+                  edit={false}
                 />
-
+              </View>
+            </View>
+            {/* Customizing forms */}{" "}
+            {showCustomForm && (
+              <View style={style.inputContainer}>
                 <InputField
                   mainTxt={"Duration (Months)"}
                   holder={"How many months to save?"}
                   txtType={"numeric"}
+                  edit={true}
                 />
 
                 <InputField
                   mainTxt={"Monthly Debit"}
                   holder={"How much should be debited monthly?"}
                   txtType={"numeric"}
+                  edit={true}
                 />
               </View>
             )}
+            {/* interest screen */}
+            <View style={style.interestContainer}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "PoppinsBold",
+                  marginHorizontal: 5,
+                }}
+              >
+                Expected Returns
+              </Text>
+              <View style={style.rateInnerCont}>
+                {/* rates */}
+                <Text style={style.rateMain}>
+                  Interest Rate {"\n"}
+                  <Text style={style.rateSub}>4.5%</Text>
+                </Text>
+
+                {/* returns */}
+                <Text style={style.rateMain}>
+                  Expected Returns {"\n"}
+                  <Text style={style.rateSub}>₦2,500</Text>
+                </Text>
+              </View>
+              {/*  */}
+              <View style={style.divider}></View>
+              <Text style={[style.rateMain, { marginHorizontal: 10 }]}>
+                Monthly Contribution:
+              </Text>
+            </View>
+            {/*  */}
             <View style={[style.dashContainer, { marginTop: 20 }]}>
               {/* text */}
               <View>
@@ -240,9 +297,9 @@ export default function MySavings() {
                 }}
               />
             </View>
-          </ScrollView>
+          </View>
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -283,7 +340,7 @@ const style = StyleSheet.create({
     marginHorizontal: 10,
   },
   inputContainer: {
-    marginTop: 20,
+    marginTop: 10,
   },
   scroll: {},
   button: {
@@ -300,7 +357,38 @@ const style = StyleSheet.create({
 
     color: Colors.white,
   },
+  interestContainer: {
+    backgroundColor: Colors.white,
+    borderRadius: 8,
+    width: "80%",
+    height: 158,
+    alignSelf: "center",
+    padding: 10,
+    gap: 15,
+    alignContent: "center",
+  },
   switch: {
     transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
+  },
+  rateInnerCont: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 5,
+  },
+  rateMain: {
+    fontSize: 12,
+    fontFamily: "PoppinsRegular",
+    color: Colors.green,
+  },
+  rateSub: {
+    fontSize: 12,
+    fontFamily: "PoppinsBold",
+    color: Colors.green,
+  },
+  divider: {
+    height: 0.3,
+    backgroundColor: Colors.green,
+    marginHorizontal: 12,
+    marginTop: 8,
   },
 });

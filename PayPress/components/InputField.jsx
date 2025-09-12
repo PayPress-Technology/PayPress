@@ -10,7 +10,7 @@ import {
 
 import { Colors } from "../constants/Colors";
 
-const InputField = ({ mainTxt, holder, txtType }) => {
+const InputField = ({ mainTxt, holder, txtType, edit }) => {
   return (
     <View>
       <Text style={styles.mainTxt}>{mainTxt}</Text>
@@ -21,6 +21,7 @@ const InputField = ({ mainTxt, holder, txtType }) => {
         placeholderTextColor="#7F7F7F"
         autoCorrect={false}
         style={styles.input}
+        editable={edit}
       />
     </View>
   );
