@@ -23,15 +23,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const handleRegister = () => {
-    if (!email || !password) {
-      setError("Invalide Entry. Try Again.");
-      return;
-    }
-    setError("");
-    // Continue registration logic...
-  };
-
   return (
     <SafeAreaView>
       <KeyboardAvoidingView
@@ -71,29 +62,24 @@ export default function Login() {
             marginBottom: 20,
           }}
         >
-          Register to start saving and investing with PAYpress today!
+          Register to start saving and investing with Paycoin today!
         </Text>
         <View style={styles.mainContainer}>
           <View style={{ marginTop: 20 }}>
-            <TextInput
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              placeholder="Email address"
-              placeholderTextColor={Colors.darkMode}
-              autoCorrect={false}
-              style={{
-                width: "90%",
-                height: 50,
-                borderRadius: 10,
-                backgroundColor: Colors.white,
-                paddingHorizontal: 20,
-                marginTop: 20,
-                alignSelf: "center",
-                padding: 10,
-              }}
-            />
+            {/* email input */}
+
+            <View>
+              <TextInput
+                keyboardType="email-address"
+                autoCapitalize="none"
+                placeholder="Email Address"
+                placeholderTextColor="#7F7F7F"
+                autoCorrect={false}
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+              />
+            </View>
             <View>
               <Ionicons
                 name="lock-closed-outline"
@@ -116,17 +102,7 @@ export default function Login() {
                 placeholder="Password"
                 placeholderTextColor={Colors.darkMode}
                 autoCorrect={false}
-                style={{
-                  width: "90%",
-                  height: 50,
-                  borderRadius: 10,
-                  backgroundColor: Colors.white,
-                  paddingHorizontal: 20,
-                  marginTop: 20,
-                  alignSelf: "center",
-                  paddingLeft: 40,
-                  marginBottom: 50,
-                }}
+                style={styles.input}
               />
               {error ? (
                 <Text
@@ -168,16 +144,27 @@ export default function Login() {
             text={"LOG IN"}
             onPress={() => {
               // handle login action here
-              handleRegister();
-              if (email && password) {
-                // router.navigate("/Home");
-                router.navigate("/Home");
+              if (!email.trim()) {
+                alert("Email is required");
+                return;
               }
+              if (!password.trim()) {
+                alert("Password is required");
+                return;
+              }
+              if (!email || !email.includes("@")) {
+                alert("Please enter a valid email address");
+                return;
+              }
+              router.navigate("/Home");
             }}
             color={Colors.Secondary}
           />
 
           <TouchableOpacity
+            onPress={() => {
+              router.push("../forgotPassword");
+            }}
             style={{ marginTop: 20, alignSelf: "center", marginBottom: 20 }}
           >
             <Text style={{ color: Colors.white }}>Forgot Password?</Text>
@@ -248,4 +235,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
   },
+  input: {
+    width: "90%",
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: Colors.white,
+    paddingHorizontal: 20,
+    marginTop: 20,
+    alignSelf: "center",
+    paddingLeft: 40,
+    marginBottom: 20,
+  },
+  inputCont: {},
 });

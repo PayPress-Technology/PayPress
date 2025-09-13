@@ -10,6 +10,8 @@ const AuthScreens = () => {
       <Stack.Screen name="transactionScreen" />
       <Stack.Screen name="confirmTransactionScreen" />
       <Stack.Screen name="Loginbiometrics" />
+      <Stack.Screen name="forgotPassword" />
+      <Stack.Screen name="creatNewPassword" />
     </Stack>
   );
 };
