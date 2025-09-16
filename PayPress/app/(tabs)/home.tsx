@@ -47,12 +47,12 @@ export default function HomeScreen() {
               top: 50,
               right: "60%",
             }}
-            resizeMode="contain"
+            contentFit="contain"
           />
           <Image
             source={require("../../assets/images/dash_star.png")}
             style={{ width: 44, height: 44, position: "absolute", top: 65 }}
-            resizeMode="contain"
+            contentFit="contain"
           />
           <View style={style.buttonRow}>
             <TouchableOpacity
@@ -73,7 +73,7 @@ export default function HomeScreen() {
                 color="black"
                 style={{ marginRight: 6 }}
               />
-              <Text>Quick Save</Text>
+              <Text>Fund wallet</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -87,7 +87,7 @@ export default function HomeScreen() {
                 alignItems: "center",
               }}
             >
-              <Text>View Savings</Text>
+              <Text>Quick Savings</Text>
               <Ionicons
                 name="arrow-forward"
                 size={20}
@@ -270,7 +270,7 @@ export default function HomeScreen() {
               }}
             >
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={style.otherServiceImg}
                 source={require("../../assets/images/scratchCard.png")}
               />
@@ -288,7 +288,7 @@ export default function HomeScreen() {
               }}
             >
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={style.otherServiceImg}
                 source={require("../../assets/images/airtime&Data.png")}
               />
@@ -306,7 +306,7 @@ export default function HomeScreen() {
               }}
             >
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={style.otherServiceImg}
                 source={require("../../assets/images/Gotv&DsTV.png")}
               />
@@ -324,7 +324,7 @@ export default function HomeScreen() {
               }}
             >
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={style.otherServiceImg}
                 source={require("../../assets/images/Electricity.png")}
               />
@@ -451,7 +451,7 @@ export default function HomeScreen() {
                 Save Automatically {"\n"} Reach your goals {"\n"} without stress
               </Text>
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={{
                   width: 89.5,
                   height: 73,
@@ -479,7 +479,7 @@ export default function HomeScreen() {
                 Save Automatically {"\n"} Reach your goals {"\n"} without stress
               </Text>
               <Image
-                resizeMode="contain"
+                contentFit="contain"
                 style={{
                   width: 89.5,
                   height: 73,

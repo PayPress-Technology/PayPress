@@ -1,68 +1,135 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { Platform } from "react-native";
-
-import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
+import { Platform, View, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image } from "expo-image";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName: React.ComponentProps<typeof Ionicons>["name"] =
-            "home-outline";
-          if (route.name === "Home") iconName = "home-outline";
-          else if (route.name === "my_savings") iconName = "wallet";
-          else if (route.name === "investment")
-            iconName = "stats-chart-outline";
-          else if (route.name === "profile") iconName = "person-circle-outline";
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
+      screenOptions={{
         tabBarActiveTintColor: Colors.Primary,
-        tabBarInactiveTintColor: Colors.darkMode,
-
         headerShown: false,
-        tabBarButton: HapticTab,
-
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: "absolute",
           },
           default: {},
         }),
-      })}
+      }}
     >
       <Tabs.Screen
         name="Home"
         options={{
           title: "Home",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={
+                focused
+                  ? require("../../assets/images/home-active.png")
+                  : require("../../assets/images/home-outline.png")
+              }
+              style={{
+                width: 24,
+                height: 24,
+                tintColor: color, // This applies the active/inactive color
+              }}
+              contentFit="contain"
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="my_savings"
         options={{
           title: "My Savings",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={
+                focused
+                  ? require("../../assets/images/wallet-active.png")
+                  : require("../../assets/images/wallet-outline.png")
+              }
+              style={{
+                width: 24,
+                height: 24,
+                tintColor: color, // This applies the active/inactive color
+              }}
+              contentFit="contain"
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="savingsDashboard"
+        options={{
+          title: "",
+          tabBarIcon: ({ color, focused }) => (
+            <View
+              style={{
+                backgroundColor: Colors.Primary,
+                height: 40,
+                width: 40,
+                borderRadius: 30,
+                justifyContent: "center",
+                alignItems: "center",
+                elevation: 5,
+              }}
+            >
+              <Ionicons
+                name={focused ? "add" : "add-outline"}
+                size={30}
+                color={Colors.white}
+              />
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
         name="investment"
         options={{
-          title: "Investment",
+          title: "investment",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={
+                focused
+                  ? require("../../assets/images/investment-active.png")
+                  : require("../../assets/images/investment-outline.png")
+              }
+              style={{
+                width: 24,
+                height: 24,
+                tintColor: color, // This applies the active/inactive color
+              }}
+              contentFit="contain"
+            />
+          ),
         }}
       />
-
       <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
+          tabBarIcon: ({ color, focused }) => (
+            <Image
+              source={
+                focused
+                  ? require("../../assets/images/profile-active.png")
+                  : require("../../assets/images/profile-outline.png")
+              }
+              style={{
+                width: 24,
+                height: 24,
+                tintColor: color, // This applies the active/inactive color
+              }}
+              contentFit="contain"
+            />
+          ),
         }}
       />
     </Tabs>

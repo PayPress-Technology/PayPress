@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import CustomSplashScreen from "../components/CustomSplashScreen";
+// import CustomSplashScreen from "../components/CustomSplashScreen";
 
 // Prevent auto hide of splash screen
 SplashScreen.preventAutoHideAsync();

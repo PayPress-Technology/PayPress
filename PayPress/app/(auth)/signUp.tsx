@@ -79,8 +79,8 @@ export default function Login() {
           Register to start saving and investing with PAYpress today!
         </Text>
 
-        <ScrollView>
-          <View style={styles.mainContainer}>
+        <View style={styles.mainContainer}>
+          <ScrollView>
             <View style={{ marginVertical: 1 }}>
               <View>
                 <TextInput
@@ -189,11 +189,6 @@ export default function Login() {
                     marginVertical: 20,
                   }}
                 />
-                {error ? (
-                  <Text style={{ color: "red", textAlign: "center" }}>
-                    {error}
-                  </Text>
-                ) : null}
 
                 <TouchableOpacity
                   style={{
@@ -239,26 +234,53 @@ export default function Login() {
               />
             </View>
 
+            {/* Button */}
+
             <CustonButton1
               text={"Continue"}
               onPress={() => {
+                if (
+                  !email ||
+                  !email.includes("@") ||
+                  !email.includes(".") ||
+                  !email.includes("gmail") ||
+                  !email.includes("com")
+                ) {
+                  alert("Please enter a valid email address");
+                  return;
+                }
+                if (!firstName.trim()) {
+                  alert("Enter your firstname");
+                  return;
+                }
+                if (!lastName.trim()) {
+                  alert("Enter last name");
+                  return;
+                }
+                if (!password.trim()) {
+                  alert("Enter Password");
+                  return;
+                }
                 // handle login action here
                 router.navigate("./createPin");
               }}
               color={Colors.Secondary}
             />
+
             <View
               style={{
                 flexDirection: "row",
                 alignSelf: "center",
                 justifyContent: "center",
                 alignItems: "center",
+                marginTop: 10,
+                marginBottom: 250,
               }}
             >
               <Text style={{ color: "white", marginBottom: 20 }}>Step 1</Text>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -270,6 +292,6 @@ const styles = StyleSheet.create({
     height: "100%",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    marginVertical: 20,
+    marginVertical: 10,
   },
 });
