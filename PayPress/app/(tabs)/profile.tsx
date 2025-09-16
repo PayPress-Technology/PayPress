@@ -122,7 +122,12 @@ export default function My_account() {
         {/* Account navs */}
         <View style={styles.navsMainContainer}>
           {/* my profile nav */}
-          <TouchableOpacity style={styles.navBgContainer}>
+          <TouchableOpacity
+            style={styles.navBgContainer}
+            onPress={() => {
+              router.push("/myProfile");
+            }}
+          >
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Image
                 source={require("../../assets/images/my_profile_accnt.png")}
