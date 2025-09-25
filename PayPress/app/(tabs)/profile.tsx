@@ -12,7 +12,6 @@ import {
   ScrollView,
   Modal,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
@@ -20,13 +19,16 @@ import { useRouter } from "expo-router";
 import CustonButton1 from "@/components/CustomButton1";
 import { navigate } from "expo-router/build/global-state/routing";
 import { useNavigation } from "@react-navigation/native";
+import { useThemeContext } from "../ThemeContext";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function My_account() {
   const [enableFaceID, setEnableFaceID] = useState(true);
   const [showDashboard, setShowDashboard] = useState(true);
-  const [enableDarkMode, setEnableDarkMode] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const router = useRouter();
+  const { isDark, toggleTheme } = useThemeContext();
 
   const toggleEnableFaceID = () => {
     setEnableFaceID((previousState) => !previousState);
@@ -35,7 +37,7 @@ export default function My_account() {
     setShowDashboard((previousState) => !previousState);
   };
   const toggleEnableDarkMode = () => {
-    setEnableDarkMode((previousState) => !previousState);
+    toggleTheme();
   };
 
   const handleLogout = () => {
@@ -47,11 +49,11 @@ export default function My_account() {
   // Add the logout function
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ThemedContainer>
       <View style={styles.accntContainer}>
         <View>
-          <Text style={styles.headingTxt}>My Account</Text>
-          <Text style={styles.SubheadingTxt}>User name</Text>
+          <ThemedText style={styles.headingTxt}>My Account</ThemedText>
+          <ThemedText style={styles.SubheadingTxt}>User name</ThemedText>
         </View>
 
         {/* profile pic here */}
@@ -63,9 +65,11 @@ export default function My_account() {
       >
         {/* toggles */}
         <View style={styles.togglesContainer}>
-          {/* text */}
+          {/* ThemedText */}
           <View style={styles.toggles}>
-            <Text style={styles.togglesTxt}>Enable Finger Print/Face ID</Text>
+            <ThemedText style={styles.togglesTxt}>
+              Enable Finger Print/Face ID
+            </ThemedText>
 
             {/* switch icon */}
             <View>
@@ -81,11 +85,11 @@ export default function My_account() {
           </View>
 
           {/* toggles */}
-          {/* text */}
+          {/* ThemedText */}
           <View style={styles.toggles}>
-            <Text style={styles.togglesTxt}>
+            <ThemedText style={styles.togglesTxt}>
               Show DashBoard Account Balance
-            </Text>
+            </ThemedText>
 
             {/* switch icon */}
             <View>
@@ -108,9 +112,9 @@ export default function My_account() {
           resizeMode="cover"
         >
           <View style={styles.dashMainContainer}>
-            <Text style={styles.dashTxt}>
+            <ThemedText style={styles.dashTxt}>
               Grow Your Savings{"\n"}Without Stress {"\n"} Start small,dream big
-            </Text>
+            </ThemedText>
             <Image
               contentFit="contain"
               style={styles.dashIconImg}
@@ -122,59 +126,66 @@ export default function My_account() {
         {/* Account navs */}
         <View style={styles.navsMainContainer}>
           {/* my profile nav */}
+
           <TouchableOpacity
             style={styles.navBgContainer}
             onPress={() => {
               router.push("/myProfile");
             }}
           >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/my_profile_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>My Profile</Text>
+              <ThemedText>My Profile</ThemedText>
             </View>
 
             <View>
-              <Text>{">"}</Text>
+              <ThemedText>{">"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of Profile */}
 
           {/* Verify NIN */}
           {/* NIN */}
-          <TouchableOpacity style={styles.navBgContainer}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={styles.navBgContainer}
+            onPress={() => router.push("../verifyNIN")}
+          >
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/verify_NIN_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>Verify NIN</Text>
+              <ThemedText>Verify NIN</ThemedText>
             </View>
 
             <View>
-              <Text>{">"}</Text>
+              <ThemedText>{">"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of NIN */}
 
           {/* Lock funds */}
           {/* funds */}
-          <TouchableOpacity style={styles.navBgContainer}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={styles.navBgContainer}
+            onPress={() => router.push("/lockDashboard")}
+          >
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/lock_funds_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>Lock Funds</Text>
+              <ThemedText>Lock Funds</ThemedText>
             </View>
 
             <View>
-              <Text>{">"}</Text>
+              <ThemedText>{">"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of lock Funds */}
@@ -182,23 +193,23 @@ export default function My_account() {
           {/* dark mode */}
           {/* my profile nav */}
           <View style={styles.navBgContainer}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/darkMode_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>Enable Dark Mode</Text>
+              <ThemedText>Enable Dark Mode</ThemedText>
             </View>
 
             <View>
               <Switch
                 style={styles.switch}
                 trackColor={{ false: "#E0E0E0", true: "#0B57BD" }}
-                thumbColor={enableDarkMode ? "#FFFFFF" : "#FFFFFF"}
+                thumbColor={isDark ? "#FFFFFF" : "#FFFFFF"}
                 ios_backgroundColor="#E0E0E0"
-                onValueChange={toggleEnableDarkMode}
-                value={enableDarkMode}
+                onValueChange={toggleTheme}
+                value={isDark}
               />
             </View>
           </View>
@@ -206,18 +217,21 @@ export default function My_account() {
 
           {/* contact */}
           {/* contact */}
-          <TouchableOpacity style={styles.navBgContainer}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={styles.navBgContainer}
+            onPress={() => router.push("../contactUs")}
+          >
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/contactUs_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>Contact Us</Text>
+              <ThemedText>Contact Us</ThemedText>
             </View>
 
             <View>
-              <Text>{">"}</Text>
+              <ThemedText>{">"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of contact */}
@@ -231,17 +245,17 @@ export default function My_account() {
             // }}
             onPress={() => setShowLogoutModal(true)}
           >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={styles.detailsContainer}>
               <Image
                 source={require("../../assets/images/logOut_accnt.png")}
                 contentFit="contain"
                 style={{ width: 25, height: 25 }}
               />
-              <Text>Log Out</Text>
+              <ThemedText>Log Out</ThemedText>
             </View>
 
             <View>
-              <Text>{">"}</Text>
+              <ThemedText>{">"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of log out */}
@@ -258,30 +272,30 @@ export default function My_account() {
         >
           <View style={styles.modalOverlay}>
             <View style={styles.modalBox}>
-              <Text style={styles.modalText}>
+              <ThemedText style={styles.modalThemedText}>
                 Are you sure you want to log out?
-              </Text>
+              </ThemedText>
 
               <View style={styles.btnRow}>
                 <TouchableOpacity
                   style={[styles.modalBtn, { backgroundColor: Colors.Primary }]}
                   onPress={handleLogout}
                 >
-                  <Text style={styles.btnText}>Yes</Text>
+                  <ThemedText style={styles.btnThemedText}>Yes</ThemedText>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   style={[styles.modalBtn, { backgroundColor: Colors.Primary }]}
                   onPress={() => setShowLogoutModal(false)}
                 >
-                  <Text style={styles.btnText}>No</Text>
+                  <ThemedText style={styles.btnThemedText}>No</ThemedText>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </Modal>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 const styles = StyleSheet.create({
@@ -294,8 +308,7 @@ const styles = StyleSheet.create({
   headingTxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   SubheadingTxt: {
     fontSize: 15,
@@ -386,7 +399,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: "center",
   },
-  modalText: {
+  modalThemedText: {
     fontSize: 16,
     fontFamily: "PoppinsSemiBold",
     textAlign: "center",
@@ -405,9 +418,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
   },
-  btnText: {
+  btnThemedText: {
     color: Colors.Secondary,
     fontSize: 14,
     fontFamily: "PoppinsSemiBold",
+  },
+  detailsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
 });

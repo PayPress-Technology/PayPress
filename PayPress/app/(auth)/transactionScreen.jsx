@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 const PinInputScreen = ({ onPinComplete }) => {
   const [pin, setPin] = useState("");
@@ -67,8 +63,8 @@ const PinInputScreen = ({ onPinComplete }) => {
   const isPinComplete = pin.length === maxLength;
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{ backgroundColor: Colors.white }}>
+    <ThemedContainer>
+      <View>
         {/* Back Icon */}
         <TouchableOpacity
           style={{
@@ -79,14 +75,14 @@ const PinInputScreen = ({ onPinComplete }) => {
           <Ionicons
             name="arrow-back-circle-outline"
             size={35}
-            color={Colors.darkMode}
+            color={Colors.gray}
           />
         </TouchableOpacity>
 
         {/*  */}
         {/* Main Page */}
         {/* Header */}
-        <Text
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsExtraBold",
@@ -96,8 +92,8 @@ const PinInputScreen = ({ onPinComplete }) => {
           }}
         >
           Create your 5-digit PIN
-        </Text>
-        <Text
+        </ThemedText>
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsRegular",
@@ -106,7 +102,7 @@ const PinInputScreen = ({ onPinComplete }) => {
           }}
         >
           Create a PIN for your Paycoin
-        </Text>
+        </ThemedText>
       </View>
       <View style={styles.content}>
         {/* PIN Input Display */}
@@ -178,14 +174,14 @@ const PinInputScreen = ({ onPinComplete }) => {
         {/* Step Indicator */}
         <Text style={styles.stepText}>Step 3</Text>
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white, // Blue background
+    backgroundColor: Colors.white,
   },
   content: {
     flex: 1,

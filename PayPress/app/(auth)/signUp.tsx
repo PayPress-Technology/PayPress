@@ -17,6 +17,8 @@ import eyeClosed from "@/assets/images/hide.png";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ScrollView } from "react-native";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,7 +38,7 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
+    <ThemedContainer style={{ flex: 1, marginBottom: 100 }}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         // style={{ flex: 1 }}
@@ -52,12 +54,12 @@ export default function Login() {
           <Ionicons
             name="arrow-back-circle-outline"
             size={35}
-            color={Colors.darkMode}
+            color={Colors.gray}
           />
         </TouchableOpacity>
 
         {/* Main Page */}
-        <Text
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsExtraBold",
@@ -67,8 +69,8 @@ export default function Login() {
           }}
         >
           Welcome onboard!
-        </Text>
-        <Text
+        </ThemedText>
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsRegular",
@@ -77,7 +79,7 @@ export default function Login() {
           }}
         >
           Register to start saving and investing with PAYpress today!
-        </Text>
+        </ThemedText>
 
         <View style={styles.mainContainer}>
           <ScrollView>
@@ -239,13 +241,7 @@ export default function Login() {
             <CustonButton1
               text={"Continue"}
               onPress={() => {
-                if (
-                  !email ||
-                  !email.includes("@") ||
-                  !email.includes(".") ||
-                  !email.includes("gmail") ||
-                  !email.includes("com")
-                ) {
+                if (!email || !email.includes("@gmail.com")) {
                   alert("Please enter a valid email address");
                   return;
                 }
@@ -282,7 +278,7 @@ export default function Login() {
           </ScrollView>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 const styles = StyleSheet.create({

@@ -3,58 +3,65 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 import { Colors } from "../constants/Colors";
 
-const FundCards = ({ text, text2, onPress, imageIcon, percentage }) => {
+const FundCards = ({ text, text2, onPress, imageIcon, percentage, active }) => {
   return (
-    <TouchableOpacity style={styles.mainContainer}>
-      {/* 1 */}
-      <View style={styles.ImageIcon}>
-        <Image style={styles.img} source={imageIcon} />
-      </View>
-      {/* ... */}
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={[
+          styles.mainContainer,
+          active && { borderWidth: 3, borderColor: Colors.Primary },
+        ]}
+      >
+        {/* 1 */}
+        <View style={styles.ImageIcon}>
+          <Image style={styles.img} source={imageIcon} />
+        </View>
+        {/* ... */}
 
-      {/* 2 */}
-      <View style={styles.middleTxt}>
-        <Text
-          style={{
-            fontSize: 18,
-            fontFamily: "PoppinsSemiBold",
-            color: Colors.darkMode,
-          }}
-        >
-          {text}
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            fontFamily: "PoppinsSemiBold",
-            color: "#AAAAAA",
-          }}
-        >
-          {text2}
-        </Text>
-      </View>
-      {/* ... */}
+        {/* 2 */}
+        <View style={styles.middleTxt}>
+          <Text
+            style={{
+              fontSize: 18,
+              fontFamily: "PoppinsSemiBold",
+              color: Colors.darkMode,
+            }}
+          >
+            {text}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "PoppinsSemiBold",
+              color: "#AAAAAA",
+            }}
+          >
+            {text2}
+          </Text>
+        </View>
+        {/* ... */}
 
-      {/* 3 */}
-      <View style={styles.percentTxt}>
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "PoppinsSemiBold",
-            color: Colors.darkMode,
-          }}
-        >
-          {percentage}
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            fontFamily: "PoppinsSemiBold",
-            color: "#AAAAAA",
-          }}
-        >
-          APY
-        </Text>
+        {/* 3 */}
+        <View style={styles.percentTxt}>
+          <Text
+            style={{
+              fontSize: 24,
+              fontFamily: "PoppinsSemiBold",
+              color: Colors.darkMode,
+            }}
+          >
+            {percentage}
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              fontFamily: "PoppinsSemiBold",
+              color: "#AAAAAA",
+            }}
+          >
+            APY
+          </Text>
+        </View>
       </View>
       {/* ... */}
     </TouchableOpacity>

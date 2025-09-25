@@ -9,11 +9,19 @@ import {
 } from "react-native";
 
 import { Colors } from "../constants/Colors";
+import ThemedText from "./ThemedText";
 
-const InputField = ({ mainTxt, holder, txtType, edit }) => {
+const InputField = ({
+  mainTxt,
+  holder,
+  txtType,
+  edit,
+  valueTxt,
+  onChangeTxt,
+}) => {
   return (
     <View>
-      <Text style={styles.mainTxt}>{mainTxt}</Text>
+      <ThemedText style={styles.mainTxt}>{mainTxt}</ThemedText>
       <TextInput
         keyboardType={txtType}
         autoCapitalize="none"
@@ -22,6 +30,8 @@ const InputField = ({ mainTxt, holder, txtType, edit }) => {
         autoCorrect={false}
         style={styles.input}
         editable={edit}
+        value={valueTxt}
+        onChangeText={onChangeTxt}
       />
     </View>
   );

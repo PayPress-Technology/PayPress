@@ -14,6 +14,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import CustomButton from "@/components/CustomButton1";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 const { width } = Dimensions.get("window");
 
 const Index = () => {
@@ -70,7 +72,7 @@ const Index = () => {
 
   const currentData = onboardingData[currentIndex];
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <ThemedContainer>
       <FlatList
         data={onboardingData}
         keyExtractor={(item) => item.id.toString()}
@@ -81,9 +83,11 @@ const Index = () => {
           <View style={[styles.content, { width }]}>
             <Image source={currentData.image} style={styles.bgImage} />
 
-            <Text style={styles.subTxt}>{currentData.title}</Text>
+            <ThemedText style={styles.subTxt}>{currentData.title}</ThemedText>
 
-            <Text style={styles.subTxt}>{currentData.subtitle}</Text>
+            <ThemedText style={styles.subTxt}>
+              {currentData.subtitle}
+            </ThemedText>
           </View>
         )}
         onScroll={(e) => {
@@ -132,7 +136,7 @@ const Index = () => {
           />
         </View>
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 };
 export default Index;
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
   subTxt: {
     textAlign: "center",
     fontSize: 16,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     lineHeight: 24,
     paddingHorizontal: 20,
     fontFamily: "PoppinsBold",

@@ -12,11 +12,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import { Bar } from "react-native-progress";
 import { Ionicons } from "@expo/vector-icons";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function LockDashboard() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.headingTxt}>Lock Dashboard</Text>
+    <ThemedContainer style={styles.container}>
+      <ThemedText style={styles.headingTxt}>Lock Dashboard</ThemedText>
       <ScrollView
         style={{ marginBottom: 30 }}
         showsVerticalScrollIndicator={false}
@@ -64,9 +66,11 @@ export default function LockDashboard() {
         {/* ... */}
 
         <View>
-          <Text style={[styles.headingTxt, { fontSize: 18, paddingRight: 20 }]}>
+          <ThemedText
+            style={[styles.headingTxt, { fontSize: 18, paddingRight: 20 }]}
+          >
             Active Locks
-          </Text>
+          </ThemedText>
         </View>
 
         {/* premium */}
@@ -99,17 +103,24 @@ export default function LockDashboard() {
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>Interest Rate</Text>
-              <Text style={styles.savingsPlanDetailValue}>4.5% APY</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                4.5% APY
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>
                 Current Earnings
               </Text>
-              <Text style={styles.savingsPlanDetailValue}> ₦2,500</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                {" "}
+                ₦2,500
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>End Date</Text>
-              <Text style={styles.savingsPlanDetailValue}>15/09/2025</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                15/09/2025
+              </ThemedText>
             </View>
           </View>
 
@@ -160,17 +171,24 @@ export default function LockDashboard() {
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>Interest Rate</Text>
-              <Text style={styles.savingsPlanDetailValue}>4.5% APY</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                4.5% APY
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>
                 Current Earnings
               </Text>
-              <Text style={styles.savingsPlanDetailValue}> ₦2,500</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                {" "}
+                ₦2,500
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>End Date</Text>
-              <Text style={styles.savingsPlanDetailValue}>15/09/2025</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                15/09/2025
+              </ThemedText>
             </View>
           </View>
 
@@ -222,17 +240,24 @@ export default function LockDashboard() {
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>Interest Rate</Text>
-              <Text style={styles.savingsPlanDetailValue}>4.5% APY</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                4.5% APY
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>
                 Current Earnings
               </Text>
-              <Text style={styles.savingsPlanDetailValue}> ₦2,500</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                {" "}
+                ₦2,500
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
               <Text style={styles.savingsPlanDetailLabel}>End Date</Text>
-              <Text style={styles.savingsPlanDetailValue}>15/09/2025</Text>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                15/09/2025
+              </ThemedText>
             </View>
           </View>
 
@@ -267,21 +292,21 @@ export default function LockDashboard() {
           <Text style={styles.mainTxt}>Withdraw</Text>
         </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    // backgroundColor: "#FFFFFF",
   },
   headingTxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
     paddingLeft: 15,
     paddingTop: 10,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   mainDashContainer: {
     flexDirection: "row",
@@ -289,7 +314,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   lockedDash: {
-    // backgroundColor: "red",
     width: 174,
     height: 85,
     borderRadius: 8,
@@ -303,10 +327,13 @@ const styles = StyleSheet.create({
     height: 24,
   },
   savingsPlanCard: {
-    backgroundColor: "#F5F5F5",
+    // backgroundColor: "#F0F0F0",
     borderRadius: 12,
     padding: 15,
     marginVertical: 10,
+    borderWidth: 1,
+    marginHorizontal: 10,
+    borderColor: Colors.gray,
   },
   savingsPlanHeader: {
     flexDirection: "row",
@@ -326,7 +353,7 @@ const styles = StyleSheet.create({
   premiumLockTitle: {
     fontSize: 16,
     fontFamily: "PoppinsSemiBold",
-    color: Colors.darkMode,
+    color: Colors.gray,
   },
   savingsPlanBadge: {
     backgroundColor: "#C8F3C8",
@@ -352,7 +379,7 @@ const styles = StyleSheet.create({
   },
   progressLabel: {
     fontSize: 12,
-    color: "#757575",
+    color: Colors.gray,
     fontFamily: "PoppinsRegular",
   },
   progressPercentage: {
@@ -364,18 +391,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginVertical: 5,
+    color: Colors.gray,
   },
   savingsPlanDetailItem: {
     flexDirection: "column",
   },
   savingsPlanDetailLabel: {
     fontSize: 12,
-    color: Colors.darkMode,
+    color: Colors.gray,
     fontFamily: "PoppinsMedium",
   },
   savingsPlanDetailValue: {
     fontSize: 14,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     fontFamily: "PoppinsSemiBold",
   },
   switch: {

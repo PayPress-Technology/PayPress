@@ -3,30 +3,35 @@ import React from "react";
 import { Platform, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { Image } from "expo-image";
+import { useThemeContext } from "../ThemeContext";
+import ThemedContainer from "@/components/ThemedContainer";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { isDark, theme } = useThemeContext();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors.Primary,
-        headerShown: false,
-        tabBarStyle: Platform.select({
-          ios: {
-            position: "absolute",
-          },
-          default: {},
-        }),
-      }}
-    >
+    <ThemedContainer>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: Colors.Primary,
+          headerShown: false,
+          tabBarStyle: Platform.select({
+            ios: {
+              position: "absolute",
+              backgroundColor: isDark ? "#121212" : "#FFFFFF",
+            },
+            default: {
+              backgroundColor: isDark ? "#121212" : "#FFFFFF",
+            },
+          }),
+        }}
+      >
       <Tabs.Screen
         name="Home"
         options={{
           title: "Home",
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={
                 focused
@@ -36,7 +41,7 @@ export default function TabLayout() {
               style={{
                 width: 24,
                 height: 24,
-                tintColor: color, // This applies the active/inactive color
+                // tintColor: color, // This applies the active/inactive color
               }}
               contentFit="contain"
             />
@@ -44,10 +49,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="my_savings"
+        name="savingsDashboard"
         options={{
           title: "My Savings",
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={
                 focused
@@ -57,7 +62,7 @@ export default function TabLayout() {
               style={{
                 width: 24,
                 height: 24,
-                tintColor: color, // This applies the active/inactive color
+                // tintColor: color, // This applies the active/inactive color
               }}
               contentFit="contain"
             />
@@ -66,10 +71,10 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="savingsDashboard"
+        name="my_savings"
         options={{
           title: "",
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ focused }) => (
             <View
               style={{
                 backgroundColor: Colors.Primary,
@@ -104,7 +109,7 @@ export default function TabLayout() {
               style={{
                 width: 24,
                 height: 24,
-                tintColor: color, // This applies the active/inactive color
+                //  tintColor: color, // This applies the active/inactive color
               }}
               contentFit="contain"
             />
@@ -115,7 +120,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={
                 focused
@@ -125,7 +130,7 @@ export default function TabLayout() {
               style={{
                 width: 24,
                 height: 24,
-                tintColor: color, // This applies the active/inactive color
+                // tintColor: color, // This applies the active/inactive color
               }}
               contentFit="contain"
             />
@@ -133,5 +138,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
-  );
+    </ThemedContainer>
+    );
 }

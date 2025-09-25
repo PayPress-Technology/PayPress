@@ -16,21 +16,19 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import CustonButton1 from "@/components/CustomButton1";
-import ThemedContainer from "@/components/ThemedContainer";
-import ThemedText from "@/components/ThemedText";
 
-export default function addBVN() {
+export default function Verify_NIN() {
   return (
-    <ThemedContainer>
-      <ThemedText style={style.addBVNtxt}>Add BVN</ThemedText>
+    <SafeAreaView>
+      <Text style={style.addBVNtxt}>Verify NIN</Text>
 
       {/* Text field */}
       <View>
-        <ThemedText
+        <Text
           style={{ fontSize: 12, fontFamily: "PoppinsMedium", paddingLeft: 20 }}
         >
-          Enter your BVN
-        </ThemedText>
+          Enter your NIN
+        </Text>
         <ImageBackground
           style={{
             flexDirection: "row",
@@ -81,7 +79,7 @@ export default function addBVN() {
             fontSize: 12,
           }}
         >
-          Enter your BVN above (11 digits){" "}
+          Enter your NIN above
         </Text>
       </View>
 
@@ -89,11 +87,13 @@ export default function addBVN() {
       <View style={style.pinTxtContainer}>
         <Text style={style.mainPinTxt}>Why do we need your NIN?</Text>
         <Text style={style.subPinTxt}>
-          We need your NIN to verify your identity and ensure that{"\n"}
-          your account is secure. This does not mean that we will{"\n"}be able
-          to access your bank account.
+          We need your NIN to verify your identify and ensure that{"\n"}
+          your account is secure. This information is required by the{"\n"}
+          Central Bank of Nigeria (CBN) to help banks identify you{"\n"}
+          and prevent fraud.
         </Text>
       </View>
+
       <View style={{ marginTop: 50 }}>
         <CustonButton1
           text={"ADD PIN"}
@@ -102,7 +102,7 @@ export default function addBVN() {
           TxtColor={Colors.white}
         />
       </View>
-    </ThemedContainer>
+    </SafeAreaView>
   );
 }
 
@@ -110,7 +110,7 @@ const style = StyleSheet.create({
   addBVNtxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-    // color: Colors.darkMode,
+    color: Colors.darkMode,
     padding: 20,
   },
   inputFD: {
@@ -127,7 +127,7 @@ const style = StyleSheet.create({
     // alignItems: "center",
     alignSelf: "center",
     gap: 5,
-    // backgroundColor: "#F4F4F4",
+    backgroundColor: "#F4F4F4",
     borderRadius: 8,
     borderWidth: 0.3,
     padding: 10,
@@ -137,12 +137,12 @@ const style = StyleSheet.create({
   mainPinTxt: {
     fontSize: 15,
     fontFamily: "PoppinsMedium",
-    color: Colors.gray,
+    color: Colors.darkMode,
   },
   subPinTxt: {
     fontSize: 12,
     fontFamily: "PoppinsRegular",
-    color: Colors.gray,
+    color: Colors.darkMode,
     justifyContent: "center",
   },
 });

@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Platform,
   StyleSheet,
@@ -10,23 +9,24 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import styles from "../styles";
 import { Image } from "expo-image";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ThemedContainer>
       <View style={style.container}>
         <View>
-          <Text style={{ fontFamily: "PoppinsExtraBold", fontSize: 18 }}>
+          <ThemedText style={{ fontFamily: "PoppinsExtraBold", fontSize: 18 }}>
             Hello
-          </Text>
-          <Text>Spend wisely</Text>
+          </ThemedText>
+          <ThemedText>Spend wisely</ThemedText>
         </View>
         <View style={style.ProfileContainer}></View>
       </View>
@@ -64,7 +64,7 @@ export default function HomeScreen() {
                 alignItems: "center",
               }}
               onPress={() => {
-                router.push("/my_savings");
+                router.push("/fundWallet");
               }}
             >
               <Ionicons
@@ -77,7 +77,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                router.push("/savingsDashboard");
+                router.push("/my_savings");
               }}
               style={{
                 backgroundColor: Colors.Secondary,
@@ -108,9 +108,11 @@ export default function HomeScreen() {
             }}
           >
             <View style={{ alignItems: "flex-start" }}>
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 14 }}>
+              <ThemedText
+                style={{ color: "#fff", fontWeight: "bold", fontSize: 14 }}
+              >
                 My Savings
-              </Text>
+              </ThemedText>
               <View
                 style={{
                   flexDirection: "row",
@@ -119,14 +121,16 @@ export default function HomeScreen() {
                   gap: 20,
                 }}
               >
-                <Text style={{ color: "#fff", fontSize: 18, marginTop: 2 }}>
+                <ThemedText
+                  style={{ color: "#fff", fontSize: 18, marginTop: 2 }}
+                >
                   ₦0
-                </Text>
+                </ThemedText>
                 <Ionicons name="eye" size={18} color="#fff" />
               </View>
             </View>
             <View style={{ alignItems: "flex-end", flexDirection: "row" }}>
-              <Text
+              <ThemedText
                 style={{
                   color: "#fff",
                   fontWeight: "bold",
@@ -135,7 +139,7 @@ export default function HomeScreen() {
                 }}
               >
                 Transaction History
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </ImageBackground>
@@ -150,9 +154,11 @@ export default function HomeScreen() {
             marginTop: 10,
           }}
         >
-          <Text style={style.toDo_Txt}>To-do lists</Text>
+          <ThemedText style={style.toDo_Txt}>To-do lists</ThemedText>
           <TouchableOpacity>
-            <Text style={style.toDo_Txt}>Hide {">"}</Text>
+            <ThemedText style={[style.toDo_Txt, { color: Colors.Primary }]}>
+              Hide {">"}
+            </ThemedText>
           </TouchableOpacity>
         </View>
 
@@ -171,7 +177,9 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/addBVN.png")}
                   />
-                  <Text style={style.cardTxt}>Add your {"\n"}BVN</Text>
+                  <ThemedText style={style.cardTxt}>
+                    Add your {"\n"}BVN
+                  </ThemedText>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -189,7 +197,9 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/lockFunds.png")}
                   />
-                  <Text style={style.cardTxt}>Lock {"\n"}Funds</Text>
+                  <ThemedText style={style.cardTxt}>
+                    Lock {"\n"}Funds
+                  </ThemedText>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -207,7 +217,9 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/linkBank.png")}
                   />
-                  <Text style={style.cardTxt}>Link{"\n"}Bank...</Text>
+                  <ThemedText style={style.cardTxt}>
+                    Link{"\n"}Bank...
+                  </ThemedText>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -221,7 +233,9 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/uploadPic.png")}
                   />
-                  <Text style={style.cardTxt}>Upload a {"\n"}Picture</Text>
+                  <ThemedText style={style.cardTxt}>
+                    Upload a {"\n"}Picture
+                  </ThemedText>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -234,7 +248,9 @@ export default function HomeScreen() {
                     style={style.cardImg}
                     source={require("../../assets/images/addBVN.png")}
                   />
-                  <Text style={style.cardTxt}>Approve{"\n"}Device</Text>
+                  <ThemedText style={style.cardTxt}>
+                    Approve{"\n"}Device
+                  </ThemedText>
                 </View>
                 <View style={style.divider} />
               </View>
@@ -243,17 +259,17 @@ export default function HomeScreen() {
         </ScrollView>
 
         {/* other Services section */}
-        <Text
+        <ThemedText
           style={{
             fontFamily: "PoppinsRegular",
             fontSize: 12,
-            color: Colors.darkMode,
+            color: Colors.gray,
             marginLeft: 20,
             marginTop: 20,
           }}
         >
           Other Services
-        </Text>
+        </ThemedText>
         <View style={[style.cardImgContainer, { marginBottom: 20 }]}>
           <TouchableOpacity
             onPress={() => {
@@ -274,7 +290,7 @@ export default function HomeScreen() {
                 style={style.otherServiceImg}
                 source={require("../../assets/images/scratchCard.png")}
               />
-              <Text style={style.otherServiceTxt}>ScratchCard</Text>
+              <ThemedText style={style.otherServiceTxt}>ScratchCard</ThemedText>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -292,7 +308,9 @@ export default function HomeScreen() {
                 style={style.otherServiceImg}
                 source={require("../../assets/images/airtime&Data.png")}
               />
-              <Text style={style.otherServiceTxt}>Airtime & Data</Text>
+              <ThemedText style={style.otherServiceTxt}>
+                Airtime & Data
+              </ThemedText>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -310,7 +328,9 @@ export default function HomeScreen() {
                 style={style.otherServiceImg}
                 source={require("../../assets/images/Gotv&DsTV.png")}
               />
-              <Text style={style.otherServiceTxt}>Gotv & Dstv sub.</Text>
+              <ThemedText style={style.otherServiceTxt}>
+                Gotv & Dstv sub.
+              </ThemedText>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -328,7 +348,10 @@ export default function HomeScreen() {
                 style={style.otherServiceImg}
                 source={require("../../assets/images/Electricity.png")}
               />
-              <Text style={style.otherServiceTxt}> Electricity</Text>
+              <ThemedText style={style.otherServiceTxt}>
+                {" "}
+                Electricity
+              </ThemedText>
             </View>
           </TouchableOpacity>
         </View>
@@ -342,9 +365,9 @@ export default function HomeScreen() {
             marginTop: 10,
           }}
         >
-          <Text style={[style.toDo_Txt, { color: "#928E8E" }]}>
+          <ThemedText style={[style.toDo_Txt, { color: "#928E8E" }]}>
             My Saving Plans
-          </Text>
+          </ThemedText>
           <TouchableOpacity>
             <Text
               style={[
@@ -422,7 +445,7 @@ export default function HomeScreen() {
                   style={style.savingsImg}
                   source={require("../../assets/images/create_your_own_plan.png")}
                 />
-                <Text style={style.savingsTxt}>Create your own plan</Text>
+                <Text style={style.savingsTxt}>Customize Plan</Text>
               </View>
             </TouchableOpacity>
 
@@ -436,7 +459,7 @@ export default function HomeScreen() {
             <View
               style={[style.slidingCard, { backgroundColor: Colors.Primary }]}
             >
-              <Text
+              <ThemedText
                 style={{
                   fontSize: 13,
                   fontFamily: "PoppinsExtraBold",
@@ -449,7 +472,7 @@ export default function HomeScreen() {
                 }}
               >
                 Save Automatically {"\n"} Reach your goals {"\n"} without stress
-              </Text>
+              </ThemedText>
               <Image
                 contentFit="contain"
                 style={{
@@ -464,7 +487,7 @@ export default function HomeScreen() {
             {/* Sliding card 2*/}
 
             <View style={[style.slidingCard, { backgroundColor: "#CD5DD3" }]}>
-              <Text
+              <ThemedText
                 style={{
                   fontSize: 13,
                   fontFamily: "PoppinsExtraBold",
@@ -477,7 +500,7 @@ export default function HomeScreen() {
                 }}
               >
                 Save Automatically {"\n"} Reach your goals {"\n"} without stress
-              </Text>
+              </ThemedText>
               <Image
                 contentFit="contain"
                 style={{
@@ -500,24 +523,24 @@ export default function HomeScreen() {
             marginTop: 10,
           }}
         >
-          <Text style={[style.toDo_Txt, { color: "#928E8E" }]}>
+          <ThemedText style={[style.toDo_Txt, { color: "#928E8E" }]}>
             Truted Investments
-          </Text>
+          </ThemedText>
           <TouchableOpacity>
-            <Text
+            <ThemedText
               style={[
                 style.toDo_Txt,
                 { color: "#CD5DD3", fontSize: 12, fontFamily: "PoppinsMedium" },
               ]}
             >
               Find more {">"}
-            </Text>
+            </ThemedText>
           </TouchableOpacity>
         </View>
 
         {/* Invest Cards 1 */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={style.mainSavingsCardContainer}>
+          <View style={[style.mainSavingsCardContainer, { marginBottom: 30 }]}>
             <View>
               <TouchableOpacity>
                 <ImageBackground
@@ -536,7 +559,7 @@ export default function HomeScreen() {
                       margin: 5,
                     }}
                   >
-                    <Text
+                    <ThemedText
                       style={{
                         textAlign: "center",
                         fontSize: 8,
@@ -544,13 +567,13 @@ export default function HomeScreen() {
                       }}
                     >
                       ₦5K . INVEST NOW
-                    </Text>
+                    </ThemedText>
                   </View>
 
                   <View>
-                    <Text
+                    <ThemedText
                       style={{
-                        // textAlign: "center",
+                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -560,7 +583,7 @@ export default function HomeScreen() {
                       }}
                     >
                       19% {"\n"}
-                      <Text
+                      <ThemedText
                         style={{
                           fontSize: 10,
                           fontFamily: "PoppinsBold",
@@ -568,13 +591,13 @@ export default function HomeScreen() {
                         }}
                       >
                         Per Annum
-                      </Text>
-                    </Text>
+                      </ThemedText>
+                    </ThemedText>
                   </View>
                 </ImageBackground>
               </TouchableOpacity>
               <View style={{ width: 103 }}>
-                <Text
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -582,17 +605,11 @@ export default function HomeScreen() {
                   }}
                 >
                   INVESTORS:1,364
-                </Text>
-                <Text
-                  style={{
-                    color: Colors.darkMode,
-                    fontSize: 10,
-                    fontFamily: "PoppinsBold",
-                  }}
-                >
+                </ThemedText>
+                <ThemedText style={style.trustTxt}>
                   CORPORATE DEBT NOTES...
-                </Text>
-                <Text
+                </ThemedText>
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -600,7 +617,7 @@ export default function HomeScreen() {
                   }}
                 >
                   4.7% returns in 3months
-                </Text>
+                </ThemedText>
               </View>
             </View>
 
@@ -623,7 +640,7 @@ export default function HomeScreen() {
                       margin: 5,
                     }}
                   >
-                    <Text
+                    <ThemedText
                       style={{
                         textAlign: "center",
                         fontSize: 8,
@@ -631,13 +648,13 @@ export default function HomeScreen() {
                       }}
                     >
                       ₦5K . SOLD OUT
-                    </Text>
+                    </ThemedText>
                   </View>
 
                   <View>
-                    <Text
+                    <ThemedText
                       style={{
-                        // textAlign: "center",
+                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -647,7 +664,7 @@ export default function HomeScreen() {
                       }}
                     >
                       21% {"\n"}
-                      <Text
+                      <ThemedText
                         style={{
                           fontSize: 10,
                           fontFamily: "PoppinsBold",
@@ -655,13 +672,13 @@ export default function HomeScreen() {
                         }}
                       >
                         Per Annum
-                      </Text>
-                    </Text>
+                      </ThemedText>
+                    </ThemedText>
                   </View>
                 </ImageBackground>
               </TouchableOpacity>
               <View style={{ width: 103 }}>
-                <Text
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -669,17 +686,11 @@ export default function HomeScreen() {
                   }}
                 >
                   INVESTORS:1,364
-                </Text>
-                <Text
-                  style={{
-                    color: Colors.darkMode,
-                    fontSize: 10,
-                    fontFamily: "PoppinsBold",
-                  }}
-                >
+                </ThemedText>
+                <ThemedText style={style.trustTxt}>
                   CORPORATE DEBT NOTES...
-                </Text>
-                <Text
+                </ThemedText>
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -687,7 +698,7 @@ export default function HomeScreen() {
                   }}
                 >
                   4.7% returns in 3months
-                </Text>
+                </ThemedText>
               </View>
             </View>
 
@@ -711,7 +722,7 @@ export default function HomeScreen() {
                       margin: 5,
                     }}
                   >
-                    <Text
+                    <ThemedText
                       style={{
                         textAlign: "center",
                         fontSize: 8,
@@ -719,13 +730,13 @@ export default function HomeScreen() {
                       }}
                     >
                       ₦5K . SOLD OUT
-                    </Text>
+                    </ThemedText>
                   </View>
 
                   <View>
-                    <Text
+                    <ThemedText
                       style={{
-                        // textAlign: "center",
+                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -735,7 +746,7 @@ export default function HomeScreen() {
                       }}
                     >
                       19% {"\n"}
-                      <Text
+                      <ThemedText
                         style={{
                           fontSize: 10,
                           fontFamily: "PoppinsBold",
@@ -743,13 +754,13 @@ export default function HomeScreen() {
                         }}
                       >
                         Per Annum
-                      </Text>
-                    </Text>
+                      </ThemedText>
+                    </ThemedText>
                   </View>
                 </ImageBackground>
               </TouchableOpacity>
               <View style={{ width: 103 }}>
-                <Text
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -757,17 +768,11 @@ export default function HomeScreen() {
                   }}
                 >
                   INVESTORS:1,364
-                </Text>
-                <Text
-                  style={{
-                    color: Colors.darkMode,
-                    fontSize: 10,
-                    fontFamily: "PoppinsBold",
-                  }}
-                >
+                </ThemedText>
+                <ThemedText style={style.trustTxt}>
                   CORPORATE DEBT NOTES...
-                </Text>
-                <Text
+                </ThemedText>
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -775,7 +780,7 @@ export default function HomeScreen() {
                   }}
                 >
                   4.7% returns in 3months
-                </Text>
+                </ThemedText>
               </View>
             </View>
 
@@ -798,7 +803,7 @@ export default function HomeScreen() {
                       margin: 5,
                     }}
                   >
-                    <Text
+                    <ThemedText
                       style={{
                         textAlign: "center",
                         fontSize: 8,
@@ -806,13 +811,13 @@ export default function HomeScreen() {
                       }}
                     >
                       ₦5K . SOLD OUT
-                    </Text>
+                    </ThemedText>
                   </View>
 
                   <View>
-                    <Text
+                    <ThemedText
                       style={{
-                        // textAlign: "center",
+                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -822,7 +827,7 @@ export default function HomeScreen() {
                       }}
                     >
                       19% {"\n"}
-                      <Text
+                      <ThemedText
                         style={{
                           fontSize: 10,
                           fontFamily: "PoppinsBold",
@@ -830,13 +835,13 @@ export default function HomeScreen() {
                         }}
                       >
                         Per Annum
-                      </Text>
-                    </Text>
+                      </ThemedText>
+                    </ThemedText>
                   </View>
                 </ImageBackground>
               </TouchableOpacity>
               <View style={{ width: 103 }}>
-                <Text
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -844,17 +849,11 @@ export default function HomeScreen() {
                   }}
                 >
                   INVESTORS:1,364
-                </Text>
-                <Text
-                  style={{
-                    color: Colors.darkMode,
-                    fontSize: 10,
-                    fontFamily: "PoppinsBold",
-                  }}
-                >
+                </ThemedText>
+                <ThemedText style={style.trustTxt}>
                   CORPORATE DEBT NOTES...
-                </Text>
-                <Text
+                </ThemedText>
+                <ThemedText
                   style={{
                     color: "#7F7F7F",
                     fontSize: 8,
@@ -862,13 +861,13 @@ export default function HomeScreen() {
                   }}
                 >
                   4.7% returns in 3months
-                </Text>
+                </ThemedText>
               </View>
             </View>
           </View>
         </ScrollView>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -911,7 +910,7 @@ const style = StyleSheet.create({
   toDo_Txt: {
     fontFamily: "PoppinsRegular",
     fontSize: 12,
-    color: Colors.darkMode,
+    color: Colors.gray,
   },
   mainCardContainer: {
     marginTop: 10,
@@ -1001,5 +1000,10 @@ const style = StyleSheet.create({
     borderRadius: 6,
     flexDirection: "row",
     marginTop: 20,
+  },
+  trustTxt: {
+    // color: Colors.darkMode,
+    fontSize: 10,
+    fontFamily: "PoppinsBold",
   },
 });

@@ -12,12 +12,14 @@ import { router, useLocalSearchParams } from "expo-router";
 import InputField from "@/components/InputField";
 import CustonButton1 from "@/components/CustomButton1";
 import { useState } from "react";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function ForgotPasswprd() {
   const [mail, setMail] = useState("");
 
   return (
-    <SafeAreaView>
+    <ThemedContainer>
       {/* Back Icon */}
       <TouchableOpacity
         style={{
@@ -35,16 +37,16 @@ export default function ForgotPasswprd() {
       <View style={style.container}>
         {/*  */}
         <View>
-          <Text style={style.mainTxt}>Forgot Password?</Text>
-          <Text style={style.subTxt}>
+          <ThemedText style={style.mainTxt}>Forgot Password?</ThemedText>
+          <ThemedText style={style.subTxt}>
             Please enter your Paycoin email below
-          </Text>
+          </ThemedText>
         </View>
 
         {/* email input */}
 
         <View style={style.inputCont}>
-          <Text style={style.mainT}>Email Address</Text>
+          <ThemedText style={style.mainT}>Email Address</ThemedText>
           <TextInput
             keyboardType="email-address"
             autoCapitalize="none"
@@ -63,7 +65,7 @@ export default function ForgotPasswprd() {
           text={"Send Code"}
           TxtColor={Colors.white}
           onPress={() => {
-            if (!mail || !mail.includes("@")) {
+            if (!mail || !mail.includes("@gmail.com")) {
               alert("Please enter a valid email address");
               return;
             }
@@ -74,7 +76,7 @@ export default function ForgotPasswprd() {
           }}
         />
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -86,7 +88,7 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsSemiBold",
     fontSize: 18,
     textAlign: "center",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   mainT: {
     fontSize: 14,

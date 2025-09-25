@@ -15,10 +15,12 @@ import CustonButton1 from "@/components/CustomButton1";
 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function Login() {
   return (
-    <SafeAreaView>
+    <ThemedContainer>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         // style={{ flex: 1 }}
@@ -34,10 +36,10 @@ export default function Login() {
           <Ionicons
             name="arrow-back-circle-outline"
             size={35}
-            color={Colors.darkMode}
+            color={Colors.gray}
           />
         </TouchableOpacity>
-        <Text
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsExtraBold",
@@ -47,8 +49,8 @@ export default function Login() {
           }}
         >
           Dee,
-        </Text>
-        <Text
+        </ThemedText>
+        <ThemedText
           style={{
             textAlign: "left",
             fontFamily: "PoppinsRegular",
@@ -57,7 +59,7 @@ export default function Login() {
           }}
         >
           Please set a secure PIN for your Paycoin. Not you? Log out
-        </Text>
+        </ThemedText>
         <View style={styles.mainContainer}>
           <View style={styles.buttonStyle}>
             <CustonButton1
@@ -94,7 +96,7 @@ export default function Login() {
           </Text>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 const styles = StyleSheet.create({

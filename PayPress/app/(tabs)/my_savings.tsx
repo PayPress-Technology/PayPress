@@ -21,25 +21,28 @@ import { useRouter } from "expo-router";
 import SavingType from "@/components/SavingType";
 import InputField from "@/components/InputField";
 import CustonButton1 from "@/components/CustomButton1";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function MySavings() {
   const [autoDebitEnabled, setAutoDebitEnabled] = useState(false);
   const [showCustomForm, setShowCustomForm] = useState(false);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const accntBalance = " ₦25,000.00";
+  const [valueTxt, setValueTxt] = useState("");
 
   const toggleAutoDebitEnabled = () => {
     setAutoDebitEnabled((previousState) => !previousState);
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ThemedContainer style={{ flex: 1 }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         keyboardVerticalOffset={80} // adjust if header overlaps
       >
-        <Text style={style.headingTxt}>Create Saving Plan</Text>
+        <ThemedText style={style.headingTxt}>Create Saving Plan</ThemedText>
 
         {/* dash... */}
         <View style={style.dash_Container}>
@@ -95,11 +98,11 @@ export default function MySavings() {
           showsVerticalScrollIndicator={false}
         >
           <View style={style.savingTypeContainer}>
-            <Text
+            <ThemedText
               style={[style.headingTxt, { fontSize: 16, paddingRight: 20 }]}
             >
               Select Saving Type
-            </Text>
+            </ThemedText>
             {/* types */}
             <View style={style.dash_Container}>
               {/* 1st two */}
@@ -192,6 +195,8 @@ export default function MySavings() {
                   holder={selectedType}
                   txtType={"default"}
                   edit={false}
+                  valueTxt={valueTxt}
+                  onChangeTxt={setValueTxt}
                 />
 
                 <InputField
@@ -199,6 +204,8 @@ export default function MySavings() {
                   holder={accntBalance}
                   txtType={"numeric"}
                   edit={false}
+                  valueTxt={valueTxt}
+                  onChangeTxt={setValueTxt}
                 />
               </View>
             </View>
@@ -210,6 +217,8 @@ export default function MySavings() {
                   holder={"How many months to save?"}
                   txtType={"numeric"}
                   edit={true}
+                  valueTxt={valueTxt}
+                  onChangeTxt={setValueTxt}
                 />
 
                 <InputField
@@ -217,6 +226,8 @@ export default function MySavings() {
                   holder={"How much should be debited monthly?"}
                   txtType={"numeric"}
                   edit={true}
+                  valueTxt={valueTxt}
+                  onChangeTxt={setValueTxt}
                 />
               </View>
             )}
@@ -254,7 +265,7 @@ export default function MySavings() {
             <View style={[style.dashContainer, { marginTop: 20 }]}>
               {/* text */}
               <View>
-                <Text
+                <ThemedText
                   style={{
                     fontSize: 14,
                     marginBottom: 10,
@@ -262,7 +273,7 @@ export default function MySavings() {
                   }}
                 >
                   Enable Auto Debit
-                </Text>
+                </ThemedText>
                 <Text
                   style={{
                     fontFamily: "PoppinsRegular",
@@ -300,7 +311,7 @@ export default function MySavings() {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 const style = StyleSheet.create({
@@ -309,7 +320,7 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsSemiBold",
     paddingLeft: 15,
     paddingTop: 10,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   dash_Container: {
     marginTop: 8,

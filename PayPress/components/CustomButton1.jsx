@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Colors } from "../constants/Colors";
+import ThemedText from "./ThemedText";
 
 const CustonButton1 = ({ text, onPress, color, TxtColor }) => {
   return (
@@ -9,7 +10,9 @@ const CustonButton1 = ({ text, onPress, color, TxtColor }) => {
       onPress={onPress}
       style={[styles.button, { backgroundColor: color }]}
     >
-      <Text style={[styles.mainTxt, { color: TxtColor }]}>{text}</Text>
+      <ThemedText style={[styles.mainTxt, { color: TxtColor }]}>
+        {text}
+      </ThemedText>
     </TouchableOpacity>
   );
 };

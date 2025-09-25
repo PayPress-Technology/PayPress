@@ -18,6 +18,8 @@ import eyeOpen from "@/assets/images/visible.png";
 import eyeClosed from "@/assets/images/hide.png";
 import React, { useState } from "react";
 import { Image } from "expo-image";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function CreateNewPasswprd() {
   const { originalMail } = useLocalSearchParams();
@@ -27,7 +29,7 @@ export default function CreateNewPasswprd() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ThemedContainer style={{ flex: 1 }}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -43,19 +45,19 @@ export default function CreateNewPasswprd() {
           <Ionicons
             name="arrow-back-circle-outline"
             size={35}
-            color={Colors.darkMode}
+            color={Colors.gray}
           />
         </TouchableOpacity>
 
         <View style={style.container}>
           {/*  */}
           <View>
-            <Text style={style.mainTxt}>Check your email</Text>
-            <Text style={style.subTxt}>
+            <ThemedText style={style.mainTxt}>Check your email</ThemedText>
+            <ThemedText style={style.subTxt}>
               Enter the 6 digit reset code Paycoin sent to{"\n"}
-              <Text style={style.mailTxt}> {originalMail}</Text> and create a
-              new password.
-            </Text>
+              <ThemedText style={style.mailTxt}> {originalMail}</ThemedText> and
+              create a new password.
+            </ThemedText>
           </View>
 
           <ScrollView
@@ -74,7 +76,7 @@ export default function CreateNewPasswprd() {
 
             <View>
               {/* password */}
-              <Text style={style.mainT}>Enter New Password</Text>
+              <ThemedText style={style.mainT}>Enter New Password</ThemedText>
               <TextInput
                 value={password}
                 onChangeText={setPassword}
@@ -124,7 +126,7 @@ export default function CreateNewPasswprd() {
             {/* Confirm Password */}
             <View>
               {/* Confirm password */}
-              <Text style={style.mainT}>Confirm New Password</Text>
+              <ThemedText style={style.mainT}>Confirm New Password</ThemedText>
               <TextInput
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
@@ -191,7 +193,7 @@ export default function CreateNewPasswprd() {
           </ScrollView>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -203,7 +205,7 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsSemiBold",
     fontSize: 18,
     textAlign: "center",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   subTxt: {
     fontFamily: "PoppinsMedium",
@@ -215,7 +217,7 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsSemiBold",
     fontSize: 14,
     textAlign: "center",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   input: {
     width: "99%",

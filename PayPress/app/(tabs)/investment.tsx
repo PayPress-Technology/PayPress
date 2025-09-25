@@ -1,15 +1,16 @@
 import React from "react";
 import { Image } from "expo-image";
-import { Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function Investment() {
   return (
-    <SafeAreaView>
+    <ThemedContainer>
       {/* Back Icon */}
       <TouchableOpacity
         style={{
@@ -20,16 +21,16 @@ export default function Investment() {
         <Ionicons
           name="arrow-back-circle-outline"
           size={35}
-          color={Colors.darkMode}
+          color={Colors.gray}
         />
       </TouchableOpacity>
-      <Text
+      <ThemedText
         style={{
           textAlign: "center",
         }}
       >
         Welcome to Investment Page!!!
-      </Text>
-    </SafeAreaView>
+      </ThemedText>
+    </ThemedContainer>
   );
 }

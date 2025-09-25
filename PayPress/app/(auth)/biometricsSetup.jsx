@@ -15,6 +15,8 @@ import CustonButton1 from "@/components/CustomButton1";
 
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);

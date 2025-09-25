@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Image } from "expo-image";
 import {
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   ScrollView,
   Switch,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import { Bar } from "react-native-progress";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,9 +19,11 @@ export default function SavingsDashboard() {
   const [isAgricAutoDebitEnabled, setIsAgricAutoDebitEnabled] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.headingTxt}>Savings Dashboard</Text>
-      <Text style={styles.subHeadingTxt}>Track your financial goals</Text>
+    <ThemedContainer>
+      <ThemedText style={styles.headingTxt}>Savings Dashboard</ThemedText>
+      <ThemedText style={styles.subHeadingTxt}>
+        Track your financial goals
+      </ThemedText>
 
       <ScrollView
         style={styles.scrollView}
@@ -32,8 +34,8 @@ export default function SavingsDashboard() {
           {/* Active Plans Card */}
           <View style={styles.counterCard}>
             <View>
-              <Text style={styles.counterLabel}>Active Plans</Text>
-              <Text style={styles.counterValue}>1</Text>
+              <ThemedText style={styles.counterLabel}>Active Plans</ThemedText>
+              <ThemedText style={styles.counterValue}>1</ThemedText>
             </View>
             <Image
               style={styles.counterIcon}
@@ -44,8 +46,8 @@ export default function SavingsDashboard() {
           {/* Paused Plans Card */}
           <View style={styles.counterCard}>
             <View>
-              <Text style={styles.counterLabel}>Paused Plans</Text>
-              <Text style={styles.counterValue}>1</Text>
+              <ThemedText style={styles.counterLabel}>Paused Plans</ThemedText>
+              <ThemedText style={styles.counterValue}>1</ThemedText>
             </View>
             <Image
               style={styles.counterIcon}
@@ -62,22 +64,24 @@ export default function SavingsDashboard() {
                 style={styles.savingsPlanIcon}
                 source={require("../../assets/images/health.png")}
               />
-              <Text style={styles.savingsPlanTitle}>
+              <ThemedText style={styles.savingsPlanTitle}>
                 Health Savings
                 {/* health savinf amount */}
                 {"\n"}
-                <Text style={styles.progressLabel}> ₦2,500</Text>
-              </Text>
+                <ThemedText style={styles.progressLabel}> ₦2,500</ThemedText>
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanBadge}>
-              <Text style={styles.savingsPlanBadgeText}>Paused</Text>
+              <ThemedText style={styles.savingsPlanBadgeText}>
+                Paused
+              </ThemedText>
             </View>
           </View>
 
           <View style={styles.progressContainer}>
             <View style={styles.progressLabels}>
-              <Text style={styles.progressLabel}>Progress</Text>
-              <Text style={styles.progressPercentage}>25%</Text>
+              <ThemedText style={styles.progressLabel}>Progress</ThemedText>
+              <ThemedText style={styles.progressPercentage}>25%</ThemedText>
             </View>
             <Bar
               progress={0.25}
@@ -93,27 +97,41 @@ export default function SavingsDashboard() {
 
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Duration</Text>
-              <Text style={styles.savingsPlanDetailValue}>2 months</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Duration
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                2 months
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Interest Rate</Text>
-              <Text style={styles.savingsPlanDetailValue}>4.5% APY</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Interest Rate
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                4.5% APY
+              </ThemedText>
             </View>
           </View>
 
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Expected Return</Text>
-              <Text
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Expected Return
+              </ThemedText>
+              <ThemedText
                 style={[styles.savingsPlanDetailValue, { color: Colors.green }]}
               >
                 ₦2,500
-              </Text>
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Auto Debit</Text>
-              <Text style={styles.savingsPlanDetailLabel}>Disabled</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Auto Debit
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Disabled
+              </ThemedText>
             </View>
           </View>
 
@@ -155,7 +173,7 @@ export default function SavingsDashboard() {
                   />
                 </View>
                 <View>
-                  <Text
+                  <ThemedText
                     style={[
                       styles.resumeSavingButtonText,
                       {
@@ -167,20 +185,9 @@ export default function SavingsDashboard() {
                     ]}
                   >
                     Resume Saving
-                  </Text>
+                  </ThemedText>
                 </View>
               </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#E0E0E0",
-                padding: 5,
-                borderRadius: 8,
-                alignItems: "center",
-              }}
-            >
-              <Ionicons name="eye" size={25} color={Colors.gray} />
             </TouchableOpacity>
           </View>
         </View>
@@ -193,7 +200,9 @@ export default function SavingsDashboard() {
                 style={styles.savingsPlanIcon}
                 source={require("../../assets/images/agric_savings.png")}
               />
-              <Text style={styles.savingsPlanTitle}>Agriculture Savings</Text>
+              <ThemedText style={styles.savingsPlanTitle}>
+                Agriculture Savings
+              </ThemedText>
             </View>
             <View
               style={[
@@ -202,18 +211,18 @@ export default function SavingsDashboard() {
                 { backgroundColor: "#C8F3C8" },
               ]}
             >
-              <Text
+              <ThemedText
                 style={[styles.savingsPlanBadgeText, { color: Colors.green }]}
               >
                 Active
-              </Text>
+              </ThemedText>
             </View>
           </View>
 
           <View style={styles.progressContainer}>
             <View style={styles.progressLabels}>
-              <Text style={styles.progressLabel}>Progress</Text>
-              <Text style={styles.progressPercentage}>20%</Text>
+              <ThemedText style={styles.progressLabel}>Progress</ThemedText>
+              <ThemedText style={styles.progressPercentage}>20%</ThemedText>
             </View>
             <Bar
               progress={0.2}
@@ -229,23 +238,39 @@ export default function SavingsDashboard() {
 
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Duration</Text>
-              <Text style={styles.savingsPlanDetailValue}>2 months</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Duration
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                2 months
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Interest Rate</Text>
-              <Text style={styles.savingsPlanDetailValue}>4.5% APY</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Interest Rate
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                4.5% APY
+              </ThemedText>
             </View>
           </View>
 
           <View style={styles.savingsPlanDetails}>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Expected Return</Text>
-              <Text style={styles.savingsPlanDetailValue}>₦2,500</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Expected Return
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailValue}>
+                ₦2,500
+              </ThemedText>
             </View>
             <View style={styles.savingsPlanDetailItem}>
-              <Text style={styles.savingsPlanDetailLabel}>Auto Debit</Text>
-              <Text style={styles.savingsPlanDetailLabel}>Disabled</Text>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Auto Debit
+              </ThemedText>
+              <ThemedText style={styles.savingsPlanDetailLabel}>
+                Disabled
+              </ThemedText>
             </View>
           </View>
 
@@ -287,7 +312,7 @@ export default function SavingsDashboard() {
                   />{" "}
                 </View>
                 <View>
-                  <Text
+                  <ThemedText
                     style={[
                       styles.resumeSavingButtonText,
                       {
@@ -299,25 +324,14 @@ export default function SavingsDashboard() {
                     ]}
                   >
                     Pause Saving
-                  </Text>
+                  </ThemedText>
                 </View>
               </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                backgroundColor: "#E0E0E0",
-                padding: 5,
-                borderRadius: 8,
-                alignItems: "center",
-              }}
-            >
-              <Ionicons name="eye" size={25} color={Colors.gray} />
             </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -372,7 +386,7 @@ const styles = StyleSheet.create({
     height: 30,
   },
   savingsPlanCard: {
-    backgroundColor: "#F5F5F5",
+    // backgroundColor: "#F5F5F5",
     borderRadius: 12,
     padding: 15,
     marginVertical: 10,
@@ -395,7 +409,7 @@ const styles = StyleSheet.create({
   savingsPlanTitle: {
     fontSize: 16,
     fontFamily: "PoppinsMedium",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   savingsPlanBadge: {
     backgroundColor: "#FFC107",
@@ -444,7 +458,7 @@ const styles = StyleSheet.create({
   },
   savingsPlanDetailValue: {
     fontSize: 14,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     fontFamily: "PoppinsMedium",
   },
   switch: {
@@ -456,7 +470,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: "center",
     marginTop: 10,
-    width: "90%",
+    width: "100%",
   },
   resumeSavingButtonText: {
     color: "#FFFFFF",

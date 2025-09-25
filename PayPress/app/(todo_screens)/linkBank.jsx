@@ -17,15 +17,17 @@ import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import CustonButton1 from "@/components/CustomButton1";
 import { router } from "expo-router";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function addBVN() {
   return (
-    <SafeAreaView>
-      <Text style={style.addBVNtxt}>My Payment Methods</Text>
+    <ThemedContainer>
+      <ThemedText style={style.addBVNtxt}>My Payment Methods</ThemedText>
 
       {/* why need pin */}
       <View style={style.pinTxtContainer}>
-        <Text style={style.subPinTxt}>
+        <ThemedText style={style.subPinTxt}>
           You add money to your{" "}
           <Text style={[style.subPinTxt, { fontFamily: "PoppinsBold" }]}>
             PayCoin
@@ -36,7 +38,7 @@ export default function addBVN() {
             Securely link
           </Text>
           your bank, and debit card and start saving money away.
-        </Text>
+        </ThemedText>
       </View>
 
       {/* Buttons */}
@@ -61,7 +63,7 @@ export default function addBVN() {
           TxtColor={Colors.darkMode}
         />
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -69,7 +71,7 @@ const style = StyleSheet.create({
   addBVNtxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     padding: 20,
   },
 
@@ -81,6 +83,7 @@ const style = StyleSheet.create({
     borderRadius: 8,
     padding: 20,
     borderColor: "#E9E9E9",
+    marginHorizontal: 15,
   },
 
   subPinTxt: {
