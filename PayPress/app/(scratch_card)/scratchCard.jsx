@@ -14,13 +14,15 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
-import { useRouter } from "expo-router";
+import { router, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "@/components/ThemedText";
 
 export default function addBVN() {
   return (
-    <SafeAreaView>
-      <Text style={style.addBVNtxt}>Scratch Card</Text>
+    <ThemedContainer>
+      <ThemedText style={style.addBVNtxt}>Scratch Card</ThemedText>
 
       {/* Text field */}
       <View>
@@ -57,7 +59,11 @@ export default function addBVN() {
 
       {/* Categories */}
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            router.navigate("/jamb");
+          }}
+        >
           <View>
             {/* JAMB */}
             <View style={style.mainContainer}>
@@ -66,10 +72,10 @@ export default function addBVN() {
                 style={style.Img}
               />
 
-              <Text style={style.mainPinTxt}>
+              <ThemedText style={style.mainPinTxt}>
                 JAMB {"\n"}
                 <Text style={style.subPinTxt}>JAMB</Text>
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </TouchableOpacity>
@@ -79,7 +85,11 @@ export default function addBVN() {
         {/* End */}
 
         {/* WAEC */}
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            router.navigate("/waec");
+          }}
+        >
           <View>
             {/* JAMB */}
             <View style={style.mainContainer}>
@@ -88,10 +98,10 @@ export default function addBVN() {
                 style={style.Img}
               />
 
-              <Text style={style.mainPinTxt}>
+              <ThemedText style={style.mainPinTxt}>
                 WAEC {"\n"}
                 <Text style={style.subPinTxt}>WAEC</Text>
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </TouchableOpacity>
@@ -110,10 +120,10 @@ export default function addBVN() {
                 style={style.Img}
               />
 
-              <Text style={style.mainPinTxt}>
+              <ThemedText style={style.mainPinTxt}>
                 NECO {"\n"}
                 <Text style={style.subPinTxt}>NECO</Text>
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </TouchableOpacity>
@@ -122,7 +132,7 @@ export default function addBVN() {
         <View style={style.divider}></View>
         {/* End */}
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -130,7 +140,7 @@ const style = StyleSheet.create({
   addBVNtxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     padding: 20,
   },
   inputFD: {
@@ -158,7 +168,7 @@ const style = StyleSheet.create({
   mainPinTxt: {
     fontFamily: "PoppinsMedium",
     fontSize: 16,
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
   },
   subPinTxt: {
     fontFamily: "PoppinsMedium",

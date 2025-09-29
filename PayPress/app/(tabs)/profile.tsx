@@ -143,7 +143,7 @@ export default function My_account() {
             </View>
 
             <View>
-              <ThemedText>{">"}</ThemedText>
+              <ThemedText>{"›"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of Profile */}
@@ -164,7 +164,7 @@ export default function My_account() {
             </View>
 
             <View>
-              <ThemedText>{">"}</ThemedText>
+              <ThemedText>{"›"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of NIN */}
@@ -185,7 +185,7 @@ export default function My_account() {
             </View>
 
             <View>
-              <ThemedText>{">"}</ThemedText>
+              <ThemedText>{"›"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of lock Funds */}
@@ -231,7 +231,7 @@ export default function My_account() {
             </View>
 
             <View>
-              <ThemedText>{">"}</ThemedText>
+              <ThemedText>{"›"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of contact */}
@@ -255,7 +255,7 @@ export default function My_account() {
             </View>
 
             <View>
-              <ThemedText>{">"}</ThemedText>
+              <ThemedText>{"›"}</ThemedText>
             </View>
           </TouchableOpacity>
           {/* End of log out */}

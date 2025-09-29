@@ -261,6 +261,7 @@ export default function Login() {
                 router.navigate("./createPin");
               }}
               color={Colors.Secondary}
+              TxtColor={Colors.white}
             />
 
             <View

@@ -16,19 +16,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import CustonButton1 from "@/components/CustomButton1";
+import ThemedContainer from "@/components/ThemedContainer";
+import ThemedText from "../../components/ThemedText";
 
 export default function Verify_NIN() {
   return (
-    <SafeAreaView>
-      <Text style={style.addBVNtxt}>Verify NIN</Text>
+    <ThemedContainer>
+      <ThemedText style={style.addBVNtxt}>Verify NIN</ThemedText>
 
       {/* Text field */}
       <View>
-        <Text
+        <ThemedText
           style={{ fontSize: 12, fontFamily: "PoppinsMedium", paddingLeft: 20 }}
         >
           Enter your NIN
-        </Text>
+        </ThemedText>
         <ImageBackground
           style={{
             flexDirection: "row",
@@ -102,7 +104,7 @@ export default function Verify_NIN() {
           TxtColor={Colors.white}
         />
       </View>
-    </SafeAreaView>
+    </ThemedContainer>
   );
 }
 
@@ -110,7 +112,7 @@ const style = StyleSheet.create({
   addBVNtxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-    color: Colors.darkMode,
+    // color: Colors.darkMode,
     padding: 20,
   },
   inputFD: {

@@ -8,7 +8,7 @@ export function useThemeColors() {
 
   const colors = {
     text: isDark ? Colors.white : Colors.darkMode,
-    background: isDark ? "#1A1B41" : "#FAFAFA",
+    background: isDark ? "#000120" : "#FAFAFA",
     card: isDark ? "#1E1E1E" : "#F5F5F5",
     border: isDark ? "#2C2C2C" : "#E0E0E0",
     primary: "#0B57BD",
