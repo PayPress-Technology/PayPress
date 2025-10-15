@@ -374,7 +374,12 @@ export default function HomeScreen() {
               </ThemedText>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              router.push("../Gotv");
+            }}
+          >
             <View
               style={{
                 flexDirection: "column",
@@ -393,7 +398,12 @@ export default function HomeScreen() {
               </ThemedText>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              router.push("../electricityBills");
+            }}
+          >
             <View
               style={{
                 flexDirection: "column",

@@ -71,7 +71,7 @@ export default function Airtime() {
                 style={{
                   padding: 15,
                 }}
-                onPress={() => router.back()}
+                onPress={() => router.navigate("/Home")}
               >
                 <Ionicons
                   name="arrow-back-circle-outline"
@@ -166,31 +166,6 @@ export default function Airtime() {
                   >
                     Select Amount
                   </ThemedText>
-                  <View style={style.amountGrid}>
-                    {amounts.map((amount, index) => (
-                      <TouchableOpacity
-                        key={index}
-                        style={[
-                          style.amountCard,
-                          selectedAmount === amount && style.selectedAmountCard,
-                        ]}
-                        onPress={() => {
-                          setSelectedAmount(amount);
-                          setCustomAmount("");
-                        }}
-                      >
-                        <Text
-                          style={[
-                            style.amountText,
-                            selectedAmount === amount &&
-                              style.selectedAmountText,
-                          ]}
-                        >
-                          {amount}
-                        </Text>
-                      </TouchableOpacity>
-                    ))}
-                  </View>
 
                   {/* Custom Amount Input */}
                   <TextInput
