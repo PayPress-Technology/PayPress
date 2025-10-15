@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  router,
   StyleSheet,
   Platform,
 } from "react-native";
@@ -17,6 +16,7 @@ import DropdownField from "../../components/DropDown";
 import InputField from "@/components/InputField";
 import { KeyboardAvoidingView } from "react-native";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { router } from "expo-router";
 
 export default function Jamb() {
   const [PhoneNumer, setPhoneNumber] = React.useState("");

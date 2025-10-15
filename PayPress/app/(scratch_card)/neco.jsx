@@ -28,7 +28,7 @@ const operators = [
   { id: 4, name: "9Mobile", image: require("../../assets/images/9Mobile.png") },
 ];
 
-export default function Waec() {
+export default function Neco() {
   const [PhoneNumer, setPhoneNumber] = React.useState("");
   const [amount, setAmount] = React.useState("");
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -60,7 +60,7 @@ export default function Waec() {
                 </TouchableOpacity>
 
                 {/* header */}
-                <ThemedText style={style.Headtxt}>Waec</ThemedText>
+                <ThemedText style={style.Headtxt}>Neco</ThemedText>
               </View>
 
               {/* JAMB */}
@@ -68,13 +68,13 @@ export default function Waec() {
               <View>
                 <View style={style.mainContainer}>
                   <Image
-                    source={require("../../assets/images/WAEC.png")}
+                    source={require("../../assets/images/NECO.png")}
                     style={style.Img}
                   />
 
                   <ThemedText style={style.mainPinTxt}>
-                    WAEC {"\n"}
-                    <Text style={style.subPinTxt}>WAEC</Text>
+                    NECO {"\n"}
+                    <Text style={style.subPinTxt}>NECO</Text>
                   </ThemedText>
                 </View>
               </View>
@@ -181,7 +181,7 @@ export default function Waec() {
                         }}
                       >
                         <View style={style.operatorContent}>
-                          <Image
+                          <RNImage
                             source={operator.image}
                             style={style.operatorImage}
                           />

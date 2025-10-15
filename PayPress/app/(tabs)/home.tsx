@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Platform,
   StyleSheet,
@@ -8,6 +8,8 @@ import {
   ImageBackground,
   ScrollView,
   Pressable,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -18,7 +20,60 @@ import { Image } from "expo-image";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedText from "@/components/ThemedText";
 
+const { width } = Dimensions.get("window");
+
+const carouselData = [
+  { id: 1, image: require("../../assets/images/banner1.jpg") },
+  { id: 2, image: require("../../assets/images/banner2.jpg") },
+];
+
 export default function HomeScreen() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef<FlatList<any>>(null);
+
+  // Auto-slide carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % carouselData.length;
+      setCurrentIndex(nextIndex);
+
+      flatListRef.current?.scrollToIndex({
+        index: nextIndex,
+        animated: true,
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  type CarouselItem = {
+    id: number;
+    image: any;
+  };
+
+  const renderCarouselItem = ({ item }: { item: CarouselItem }) => (
+    <View style={style.carouselSlide}>
+      <Image
+        source={item.image}
+        style={style.carouselImage}
+        contentFit="contain"
+      />
+    </View>
+  );
+
+  const renderDots = () => {
+    return (
+      <View style={style.dotsContainer}>
+        {carouselData.map((_, index) => (
+          <View
+            key={index}
+            style={[style.dot, currentIndex === index && style.activeDot]}
+          />
+        ))}
+      </View>
+    );
+  };
+
   return (
     <ThemedContainer>
       <View style={style.container}>
@@ -109,30 +164,33 @@ export default function HomeScreen() {
           >
             <View style={{ alignItems: "flex-start" }}>
               <ThemedText
-                style={{ color: "#fff", fontWeight: "bold", fontSize: 14 }}
+                style={{
+                  color: Colors.white,
+                  fontWeight: "bold",
+                  fontSize: 14,
+                }}
               >
                 My Savings
               </ThemedText>
               <View
                 style={{
                   flexDirection: "row",
-
                   alignItems: "center",
                   gap: 20,
                 }}
               >
                 <ThemedText
-                  style={{ color: "#fff", fontSize: 18, marginTop: 2 }}
+                  style={{ color: Colors.white, fontSize: 18, marginTop: 2 }}
                 >
                   ₦0
                 </ThemedText>
-                <Ionicons name="eye" size={18} color="#fff" />
+                <Ionicons name="eye" size={18} color={Colors.white} />
               </View>
             </View>
             <View style={{ alignItems: "flex-end", flexDirection: "row" }}>
               <ThemedText
                 style={{
-                  color: "#fff",
+                  color: Colors.white,
                   fontWeight: "bold",
                   fontSize: 14,
                   marginRight: 6,
@@ -293,13 +351,16 @@ export default function HomeScreen() {
               <ThemedText style={style.otherServiceTxt}>ScratchCard</ThemedText>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("../airtime");
+            }}
+          >
             <View
               style={{
                 flexDirection: "column",
                 marginTop: 10,
                 marginLeft: 20,
-                // justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -319,7 +380,6 @@ export default function HomeScreen() {
                 flexDirection: "column",
                 marginTop: 10,
                 marginLeft: 20,
-                // justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -339,7 +399,6 @@ export default function HomeScreen() {
                 flexDirection: "column",
                 marginTop: 10,
                 marginLeft: 20,
-                // justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -365,14 +424,18 @@ export default function HomeScreen() {
             marginTop: 10,
           }}
         >
-          <ThemedText style={[style.toDo_Txt, { color: "#928E8E" }]}>
+          <ThemedText style={[style.toDo_Txt, { color: Colors.gray }]}>
             My Saving Plans
           </ThemedText>
           <TouchableOpacity>
             <Text
               style={[
                 style.toDo_Txt,
-                { color: "#0B57BD", fontSize: 12, fontFamily: "PoppinsMedium" },
+                {
+                  color: Colors.Primary,
+                  fontSize: 12,
+                  fontFamily: "PoppinsMedium",
+                },
               ]}
             >
               View All {">"}
@@ -448,71 +511,29 @@ export default function HomeScreen() {
                 <Text style={style.savingsTxt}>Customize Plan</Text>
               </View>
             </TouchableOpacity>
-
-            {/* End of saving... */}
           </View>
         </ScrollView>
 
-        {/* Sliding card 1*/}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={style.mainSavingsCardContainer}>
-            <View
-              style={[style.slidingCard, { backgroundColor: Colors.Primary }]}
-            >
-              <ThemedText
-                style={{
-                  fontSize: 13,
-                  fontFamily: "PoppinsExtraBold",
-                  color: Colors.white,
-                  marginLeft: 20,
-                  marginTop: 10,
-                  width: 150,
-                  textAlign: "center",
-                  justifyContent: "center",
-                }}
-              >
-                Save Automatically {"\n"} Reach your goals {"\n"} without stress
-              </ThemedText>
-              <Image
-                contentFit="contain"
-                style={{
-                  width: 89.5,
-                  height: 73,
-                  justifyContent: "space-between",
-                }}
-                source={require("../../assets/images/pana.png")}
-              />
-            </View>
-
-            {/* Sliding card 2*/}
-
-            <View style={[style.slidingCard, { backgroundColor: "#CD5DD3" }]}>
-              <ThemedText
-                style={{
-                  fontSize: 13,
-                  fontFamily: "PoppinsExtraBold",
-                  color: Colors.white,
-                  marginLeft: 20,
-                  marginTop: 10,
-                  width: 150,
-                  textAlign: "center",
-                  justifyContent: "center",
-                }}
-              >
-                Save Automatically {"\n"} Reach your goals {"\n"} without stress
-              </ThemedText>
-              <Image
-                contentFit="contain"
-                style={{
-                  width: 89.5,
-                  height: 73,
-                  justifyContent: "space-between",
-                }}
-                source={require("../../assets/images/pana.png")}
-              />
-            </View>
-          </View>
-        </ScrollView>
+        {/* Auto-Sliding Carousel */}
+        <View style={style.carouselContainer}>
+          <FlatList
+            ref={flatListRef}
+            data={carouselData}
+            renderItem={renderCarouselItem}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal
+            pagingEnabled
+            scrollEventThrottle={16}
+            showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={(event) => {
+              const index = Math.round(
+                event.nativeEvent.contentOffset.x / width
+              );
+              setCurrentIndex(index);
+            }}
+          />
+          {renderDots()}
+        </View>
 
         {/* Trusted Investment Section */}
         <View
@@ -523,14 +544,18 @@ export default function HomeScreen() {
             marginTop: 10,
           }}
         >
-          <ThemedText style={[style.toDo_Txt, { color: "#928E8E" }]}>
+          <ThemedText style={[style.toDo_Txt, { color: Colors.gray }]}>
             Truted Investments
           </ThemedText>
           <TouchableOpacity>
             <ThemedText
               style={[
                 style.toDo_Txt,
-                { color: "#CD5DD3", fontSize: 12, fontFamily: "PoppinsMedium" },
+                {
+                  color: Colors.Primary,
+                  fontSize: 12,
+                  fontFamily: "PoppinsMedium",
+                },
               ]}
             >
               Find more {">"}
@@ -550,7 +575,7 @@ export default function HomeScreen() {
                 >
                   <View
                     style={{
-                      backgroundColor: "#0A9814",
+                      backgroundColor: Colors.green,
                       borderRadius: 10,
                       width: "80%",
                       height: 15,
@@ -573,7 +598,6 @@ export default function HomeScreen() {
                   <View>
                     <ThemedText
                       style={{
-                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -599,7 +623,7 @@ export default function HomeScreen() {
               <View style={{ width: 103 }}>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -611,7 +635,7 @@ export default function HomeScreen() {
                 </ThemedText>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -654,7 +678,6 @@ export default function HomeScreen() {
                   <View>
                     <ThemedText
                       style={{
-                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -680,7 +703,7 @@ export default function HomeScreen() {
               <View style={{ width: 103 }}>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -692,7 +715,7 @@ export default function HomeScreen() {
                 </ThemedText>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -703,7 +726,6 @@ export default function HomeScreen() {
             </View>
 
             {/* Invest Card 3 */}
-
             <View>
               <TouchableOpacity>
                 <ImageBackground
@@ -736,7 +758,6 @@ export default function HomeScreen() {
                   <View>
                     <ThemedText
                       style={{
-                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -762,7 +783,7 @@ export default function HomeScreen() {
               <View style={{ width: 103 }}>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -774,7 +795,7 @@ export default function HomeScreen() {
                 </ThemedText>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -817,7 +838,6 @@ export default function HomeScreen() {
                   <View>
                     <ThemedText
                       style={{
-                        //textAlign: "center",
                         fontSize: 12,
                         color: Colors.white,
                         position: "absolute",
@@ -843,7 +863,7 @@ export default function HomeScreen() {
               <View style={{ width: 103 }}>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -855,7 +875,7 @@ export default function HomeScreen() {
                 </ThemedText>
                 <ThemedText
                   style={{
-                    color: "#7F7F7F",
+                    color: Colors.gray,
                     fontSize: 8,
                     fontFamily: "PoppinsBold",
                   }}
@@ -892,7 +912,6 @@ const style = StyleSheet.create({
   dash_image: {
     borderRadius: 15,
     height: 139,
-
     justifyContent: "flex-start",
     overflow: "hidden",
     alignContent: "center",
@@ -946,7 +965,6 @@ const style = StyleSheet.create({
     fontFamily: "PoppinsMedium",
     fontSize: 12,
     color: Colors.darkMode,
-    // justifyContent: "center",
     marginLeft: 10,
   },
   divider: {
@@ -996,14 +1014,43 @@ const style = StyleSheet.create({
   slidingCard: {
     width: 289,
     height: 83,
-    // backgroundColor: Colors.Primary,
     borderRadius: 6,
     flexDirection: "row",
     marginTop: 20,
   },
   trustTxt: {
-    // color: Colors.darkMode,
     fontSize: 10,
     fontFamily: "PoppinsBold",
+  },
+
+  // Carousel styles
+  carouselContainer: {
+    marginVertical: 20,
+    // marginHorizontal: 20,
+  },
+  carouselSlide: {
+    width: width,
+  },
+  carouselImage: {
+    width: width,
+    height: 100,
+    borderRadius: 10,
+  },
+  dotsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "#ccc",
+    marginHorizontal: 4,
+  },
+  activeDot: {
+    backgroundColor: Colors.Primary,
   },
 });

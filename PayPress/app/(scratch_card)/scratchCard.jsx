@@ -1,137 +1,98 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Image } from "expo-image";
 import {
-  Platform,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  ImageBackground,
-  View,
   TextInput,
-  ScrollView,
-  Switch,
+  TouchableOpacity,
+  View,
+  FlatList,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Colors } from "@/constants/Colors";
-import { router, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
+import { router } from "expo-router";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedText from "@/components/ThemedText";
 
-export default function addBVN() {
+export default function ScratchCard() {
+  const [query, setQuery] = useState("");
+
+  // Categories data
+  const categories = [
+    {
+      id: 1,
+      name: "JAMB",
+      image: require("../../assets/images/JAMB.png"),
+      route: "/jamb",
+    },
+    {
+      id: 2,
+      name: "WAEC",
+      image: require("../../assets/images/WAEC.png"),
+      route: "/waec",
+    },
+    {
+      id: 3,
+      name: "NECO",
+      image: require("../../assets/images/NECO.png"),
+      route: "/neco",
+    },
+  ];
+
+  // Filter categories based on search query
+  const filteredData = categories.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+  // Render category item
+  const renderCategory = ({ item }) => (
+    <TouchableOpacity onPress={() => router.navigate(item.route)}>
+      <View>
+        <View style={style.mainContainer}>
+          <Image source={item.image} style={style.Img} />
+          <ThemedText style={style.mainPinTxt}>
+            {item.name} {"\n"}
+            <ThemedText style={style.subPinTxt}>{item.name}</ThemedText>
+          </ThemedText>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+
   return (
     <ThemedContainer>
       <ThemedText style={style.addBVNtxt}>Scratch Card</ThemedText>
 
-      {/* Text field */}
-      <View>
-        <ImageBackground
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignContent: "space-around",
-            alignSelf: "center",
-            alignItems: "center",
-          }}
-        >
-          <TextInput
-            style={style.inputFD}
-            //   value={email}
-            //   onChangeText={setEmail}
-            keyboardType="default"
-            autoCapitalize="none"
-            placeholderTextColor={Colors.gray}
-            autoCorrect={false}
-          />
-          <Ionicons
-            name="search"
-            size={24}
-            style={{
-              position: "absolute",
-              left: 10,
-              right: 0,
-              alignSelf: "center",
-            }}
-          />
-        </ImageBackground>
+      {/* Search Field */}
+      <View style={style.searchWrapper}>
+        <Ionicons
+          name="search"
+          size={22}
+          color="#666"
+          style={style.searchIcon}
+        />
+        <TextInput
+          style={style.inputFD}
+          value={query}
+          onChangeText={setQuery}
+          placeholder="Search"
+          placeholderTextColor={Colors.gray}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
       </View>
 
-      {/* Categories */}
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            router.navigate("/jamb");
-          }}
-        >
-          <View>
-            {/* JAMB */}
-            <View style={style.mainContainer}>
-              <Image
-                source={require("../../assets/images/JAMB.png")}
-                style={style.Img}
-              />
-
-              <ThemedText style={style.mainPinTxt}>
-                JAMB {"\n"}
-                <Text style={style.subPinTxt}>JAMB</Text>
-              </ThemedText>
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        {/* divider */}
-        <View style={style.divider}></View>
-        {/* End */}
-
-        {/* WAEC */}
-        <TouchableOpacity
-          onPress={() => {
-            router.navigate("/waec");
-          }}
-        >
-          <View>
-            {/* JAMB */}
-            <View style={style.mainContainer}>
-              <Image
-                source={require("../../assets/images/WAEC.png")}
-                style={style.Img}
-              />
-
-              <ThemedText style={style.mainPinTxt}>
-                WAEC {"\n"}
-                <Text style={style.subPinTxt}>WAEC</Text>
-              </ThemedText>
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        {/* divider */}
-        <View style={style.divider}></View>
-        {/* End */}
-
-        {/* NECO */}
-        <TouchableOpacity>
-          <View>
-            {/* JAMB */}
-            <View style={style.mainContainer}>
-              <Image
-                source={require("../../assets/images/NECO.png")}
-                style={style.Img}
-              />
-
-              <ThemedText style={style.mainPinTxt}>
-                NECO {"\n"}
-                <Text style={style.subPinTxt}>NECO</Text>
-              </ThemedText>
-            </View>
-          </View>
-        </TouchableOpacity>
-
-        {/* divider */}
-        <View style={style.divider}></View>
-        {/* End */}
-      </View>
+      {/* Categories List */}
+      <FlatList
+        data={filteredData}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderCategory}
+        ListEmptyComponent={
+          query.length > 0 && (
+            <ThemedText style={style.noResultTxt}>No result found</ThemedText>
+          )
+        }
+        ItemSeparatorComponent={() => <View style={style.divider} />}
+      />
     </ThemedContainer>
   );
 }
@@ -140,19 +101,32 @@ const style = StyleSheet.create({
   addBVNtxt: {
     fontSize: 18,
     fontFamily: "PoppinsSemiBold",
-    // color: Colors.darkMode,
     padding: 20,
+  },
+  searchWrapper: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+  },
+  searchIcon: {
+    position: "absolute",
+    left: 30,
+    top: "50%",
+    transform: [{ translateY: -10 }],
+    zIndex: 1,
   },
   inputFD: {
     width: "90%",
     height: 50,
     borderRadius: 8,
-    backgroundColor: "#E3E3E3",
-    paddingHorizontal: 30,
+    backgroundColor: Colors.white,
+    paddingHorizontal: 40,
     marginTop: 10,
     alignSelf: "center",
-    padding: 10,
-    paddingLeft: "10%",
+    color: Colors.text,
+    fontFamily: "PoppinsSemiBold",
+    fontSize: 14,
   },
   mainContainer: {
     flexDirection: "row",
@@ -168,7 +142,6 @@ const style = StyleSheet.create({
   mainPinTxt: {
     fontFamily: "PoppinsMedium",
     fontSize: 16,
-    // color: Colors.darkMode,
   },
   subPinTxt: {
     fontFamily: "PoppinsMedium",
@@ -177,10 +150,14 @@ const style = StyleSheet.create({
   },
   divider: {
     height: 1,
-    backgroundColor: "#C3C3C3",
+    backgroundColor: Colors.gray,
     marginHorizontal: 12,
-    // marginTop: 5,
     width: "80%",
     alignSelf: "center",
+  },
+  noResultTxt: {
+    textAlign: "center",
+    marginTop: 10,
+    fontStyle: "italic",
   },
 });

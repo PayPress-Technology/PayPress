@@ -9,6 +9,7 @@ import { View } from "react-native";
 import { ThemeProvider } from "./ThemeContext";
 import { NavigationContainer } from "@react-navigation/native";
 import ThemedContainer from "@/components/ThemedContainer";
+import Tabs from "expo-router";
 
 // import CustomSplashScreen from "../components/CustomSplashScreen";
 
@@ -44,12 +45,13 @@ export default function RootLayout() {
         <Stack.Screen name="(start_savings)" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(transaction_screens)" />
-        <Stack.Screen name="(account)" />
+        <Stack.Screen name="(account_screens)" />
         <Stack.Screen name="index" />
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="mySavings" />
         <Stack.Screen name="(scratch_card)" />
         <Stack.Screen name="(todo_screens)" />
+        <Stack.Screen name="(aitime&data)" />
       </Stack>
     </ThemeProvider>
   );
