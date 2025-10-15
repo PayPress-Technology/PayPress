@@ -14,7 +14,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
@@ -30,6 +30,20 @@ export default function MySavings() {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const accntBalance = " ₦25,000.00";
   const [valueTxt, setValueTxt] = useState("");
+
+  // params
+  const params = useLocalSearchParams();
+  const savingsTypeRoute = params.savingType as string;
+
+  React.useEffect(() => {
+    if (savingsTypeRoute) {
+      setSelectedType(savingsTypeRoute);
+
+      if (savingsTypeRoute === "Customize Plan") {
+        setShowCustomForm(true);
+      }
+    }
+  }, [savingsTypeRoute]);
 
   const toggleAutoDebitEnabled = () => {
     setAutoDebitEnabled((previousState) => !previousState);

@@ -19,6 +19,7 @@ import styles from "../styles";
 import { Image } from "expo-image";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedText from "@/components/ThemedText";
+import SavingType from "@/components/SavingType";
 
 const { width } = Dimensions.get("window");
 
@@ -457,7 +458,14 @@ export default function HomeScreen() {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={style.mainSavingsCardContainer}>
             {/* health savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { SavingType: "Health Savings" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#CCFDC7" }]}>
                 <Image
                   style={style.savingsImg}
@@ -468,7 +476,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* Education Savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { savingType: "Education Savings" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#E5F6FF" }]}>
                 <Image
                   style={style.savingsImg}
@@ -479,7 +494,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* Rent savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { savingType: "Rent Savings" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#FFEEBE" }]}>
                 <Image
                   style={style.savingsImg}
@@ -490,7 +512,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* Wedding savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { savingType: "Wedding Savings" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#F6D5D5" }]}>
                 <Image
                   style={style.savingsImg}
@@ -501,7 +530,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* Real estate savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { savingType: "Real Estate Savings" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#CBC3F8" }]}>
                 <Image
                   style={style.savingsImg}
@@ -512,7 +548,14 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {/* customize savings */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push({
+                  pathname: "/(tabs)/my_savings",
+                  params: { savingType: "Customize Plan" },
+                });
+              }}
+            >
               <View style={[style.SavingCards, { backgroundColor: "#9DBCE5" }]}>
                 <Image
                   style={style.savingsImg}
