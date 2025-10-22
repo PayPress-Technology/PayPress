@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, ViewProps } from 'react-native';
-import { useThemeColors } from '../hooks/useThemeColors';
+import React from "react";
+import { View, ViewProps } from "react-native";
+import { useThemeColors } from "../hooks/useThemeColors";
 
 interface ThemedViewProps extends ViewProps {
   lightBg?: string;
@@ -8,8 +8,8 @@ interface ThemedViewProps extends ViewProps {
 }
 
 export default function ThemedView({
-  lightBg = '#FFFFFF',
-  darkBg = '#121212',
+  lightBg = "#FFFFFF",
+  darkBg = "#121212",
   style,
   ...props
 }: ThemedViewProps) {

@@ -34,23 +34,42 @@ export default function Fund_Wallet() {
               source={require("../../assets/images/fundWallet_mobile.png")}
               style={styles.Img}
             />
-
-            <Image
-              source={require("../../assets/images/fundWallet_done.png")}
-              style={{ height: 55.13, width: 55.13 }}
-            />
           </View>
 
           {/*  */}
+          <View>
+            <Image
+              source={require("../../assets/images/fundWallet_done.png")}
+              style={{ height: 55.13, width: 55.13, alignSelf: "center" }}
+            />
+          </View>
+          {/* Text */}
+          <View style={styles.txtContainer}>
+            <Text style={styles.subTxt}>Done!</Text>
+            <Text style={styles.mainTxt}>Wallet funded Successfully</Text>
+            <Text
+              style={[
+                styles.subTxt,
+                {
+                  fontFamily: "PoppinsMedium",
+                  fontSize: 15,
+                  textAlign: "center",
+                },
+              ]}
+            >
+              You have funded you Account with {"\n"}₦50,000
+            </Text>
+          </View>
 
           {/* fund wallet button */}
-          <View>
+          <View style={{ paddingBottom: 70 }}>
             <CustonButton1
               text={"Back to Home"}
               onPress={() => {
                 router.push("../Home");
               }}
               color={Colors.Secondary}
+              TxtColor={Colors.darkMode}
             />
           </View>
         </View>
@@ -63,72 +82,42 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.Primary,
     width: "90%",
-    height: "80%",
+    height: "60%",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     alignSelf: "center",
-    justifyContent: "space-between",
-    marginVertical: "10%",
+    justifyContent: "center",
+    marginTop: "30%",
     paddingVertical: 30,
   },
-  bioTxtContainer: {
-    // alignItems: "center",
-    paddingHorizontal: 5,
-  },
-  bioTxt: {
-    fontSize: 24,
-    fontFamily: "PoppinsBold",
-    color: "#fff",
-    marginLeft: 20,
-    // textAlign: "center",
-  },
-  bioSubTxt: {
-    fontSize: 18,
-    fontFamily: "PoppinsSemiBold",
-    color: "#fff",
-    // textAlign: "center",
-    marginLeft: 20,
-  },
-  input: {
-    width: "90%",
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: Colors.white,
-    paddingHorizontal: 20,
-    marginTop: 10,
-    alignSelf: "center",
-    paddingLeft: 30,
-    marginBottom: 20,
-  },
+
   ImgContainer: {
     alignItems: "center",
     // position: "absolute",
     zIndex: 1,
     alignSelf: "center",
+    position: "relative",
+    top: -40,
   },
   Img: {
     height: 216,
     width: 247,
     resizeMode: "contain",
   },
-  button: {
-    // width: "40%",
-    padding: 10,
-    borderRadius: 5,
+
+  txtContainer: {
     alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    backgroundColor: Colors.Secondary,
+    gap: 15,
+    marginVertical: 15,
   },
-  BtnTxt: {
-    fontSize: 15,
+  mainTxt: {
+    fontSize: 20,
     fontFamily: "PoppinsSemiBold",
+    color: Colors.white,
   },
-  BtnContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 15,
-    marginVertical: 10,
-    gap: 5,
+  subTxt: {
+    fontSize: 18,
+    fontFamily: "PoppinsSemiBold",
+    color: Colors.white,
   },
 });

@@ -71,7 +71,7 @@ export default function Airtime() {
                 style={{
                   padding: 15,
                 }}
-                onPress={() => router.navigate("/Home")}
+                onPress={() => router.back()}
               >
                 <Ionicons
                   name="arrow-back-circle-outline"
@@ -117,7 +117,10 @@ export default function Airtime() {
               </TouchableOpacity>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              style={{ flex: 1 }}
+            >
               {/* Select network */}
               <View style={style.networkSection}>
                 <ThemedText style={[style.Headtxt, { marginVertical: 10 }]}>

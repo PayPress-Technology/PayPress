@@ -20,6 +20,7 @@ import ThemedText from "@/components/ThemedText";
 
 export default function Fund_Wallet() {
   const [error, setError] = useState("");
+  const [amount, setAmount] = useState("");
 
   return (
     <ThemedContainer style={{ flex: 1, backgroundColor: "#B6CDEB  " }}>
@@ -95,9 +96,14 @@ export default function Fund_Wallet() {
             <CustonButton1
               text={"Fund Wallet"}
               onPress={() => {
+                if (amount.trim()) {
+                  alert("Enter Amount");
+                  return;
+                }
                 router.navigate("/fundSuccess");
               }}
               color={Colors.Secondary}
+              TxtColor={Colors.darkMode}
             />
           </View>
         </View>

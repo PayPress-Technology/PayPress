@@ -52,6 +52,8 @@ export default function RootLayout() {
         <Stack.Screen name="(scratch_card)" />
         <Stack.Screen name="(todo_screens)" />
         <Stack.Screen name="(aitime&data)" />
+        <Stack.Screen name="(electricityBills)" />
+        <Stack.Screen name="(Gotv&Dstv)" />
       </Stack>
     </ThemeProvider>
   );
