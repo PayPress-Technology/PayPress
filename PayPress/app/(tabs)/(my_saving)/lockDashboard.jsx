@@ -30,7 +30,7 @@ export default function LockDashboard() {
             style={[styles.lockedDash, { backgroundColor: Colors.Primary }]}
           >
             <Image
-              source={require("../../assets/images/locked.png")}
+              source={require("../../../assets/images/locked.png")}
               style={styles.dashIcon}
             />
             <Text
@@ -48,7 +48,7 @@ export default function LockDashboard() {
           {/* total earnings */}
           <View style={[styles.lockedDash, { backgroundColor: Colors.green }]}>
             <Image
-              source={require("../../assets/images/earnings.png")}
+              source={require("../../../assets/images/earnings.png")}
               style={styles.dashIcon}
             />
             <Text

@@ -8,7 +8,6 @@ import {
   ScrollView,
 } from "react-native";
 import { Colors } from "@/constants/Colors";
-import { SafeAreaView } from "react-native-safe-area-context";
 import ThemedContainer from "@/components/ThemedContainer";
 import ThemedText from "@/components/ThemedText";
 
@@ -22,7 +21,7 @@ export default function Contact_us() {
       </View>
       <View style={styles.Imgcontainer}>
         <Image
-          source={require("../../assets/images/contactUs_Dash.png")}
+          source={require("../../../assets/images/contactUs_Dash.png")}
           style={styles.img}
         />
       </View>
@@ -56,7 +55,7 @@ export default function Contact_us() {
           <View style={styles.Container}>
             <View>
               <Image
-                source={require("../../assets/images/phone_icon.png")}
+                source={require("../../../assets/images/phone_icon.png")}
                 style={styles.Img}
               />
             </View>
@@ -78,7 +77,7 @@ export default function Contact_us() {
           <View style={styles.Container}>
             <View>
               <Image
-                source={require("../../assets/images/email_icon.png")}
+                source={require("../../../assets/images/email_icon.png")}
                 style={styles.Img}
               />
             </View>
@@ -100,7 +99,7 @@ export default function Contact_us() {
           <TouchableOpacity style={styles.Container}>
             <View>
               <Image
-                source={require("../../assets/images/instagram_icon.png")}
+                source={require("../../../assets/images/instagram_icon.png")}
                 style={styles.Img}
               />
             </View>
@@ -118,7 +117,7 @@ export default function Contact_us() {
           <TouchableOpacity style={styles.Container}>
             <View>
               <Image
-                source={require("../../assets/images/faceBook_icon.png")}
+                source={require("../../../assets/images/faceBook_icon.png")}
                 style={styles.Img}
               />
             </View>
@@ -136,7 +135,7 @@ export default function Contact_us() {
           <TouchableOpacity style={styles.Container}>
             <View>
               <Image
-                source={require("../../assets/images/twitter_icon.png")}
+                source={require("../../../assets/images/twitter_icon.png")}
                 style={styles.Img}
               />
             </View>

@@ -58,7 +58,7 @@ export default function My_savings() {
               <TouchableOpacity style={styles.cameraImgContainer}>
                 <Image
                   style={styles.cameraImg}
-                  source={require("../../assets/images/profile-camera.png")}
+                  source={require("../../../assets/images/profile-camera.png")}
                 />
               </TouchableOpacity>
             </View>

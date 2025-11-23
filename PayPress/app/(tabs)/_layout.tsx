@@ -27,117 +27,126 @@ export default function TabLayout() {
           }),
         }}
       >
-      <Tabs.Screen
-        name="Home"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={
-                focused
-                  ? require("../../assets/images/home-active.png")
-                  : require("../../assets/images/home-outline.png")
-              }
-              style={{
-                width: 24,
-                height: 24,
-                // tintColor: color, // This applies the active/inactive color
-              }}
-              contentFit="contain"
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="savingsDashboard"
-        options={{
-          title: "My Savings",
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={
-                focused
-                  ? require("../../assets/images/wallet-active.png")
-                  : require("../../assets/images/wallet-outline.png")
-              }
-              style={{
-                width: 24,
-                height: 24,
-                // tintColor: color, // This applies the active/inactive color
-              }}
-              contentFit="contain"
-            />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="my_savings"
-        options={{
-          title: "",
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                backgroundColor: Colors.Primary,
-                height: 40,
-                width: 40,
-                borderRadius: 30,
-                justifyContent: "center",
-                alignItems: "center",
-                elevation: 5,
-              }}
-            >
-              <Ionicons
-                name={focused ? "add" : "add-outline"}
-                size={30}
-                color={Colors.white}
+        <Tabs.Screen
+          name="Home"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("../../assets/images/home-active.png")
+                    : require("../../assets/images/home-outline.png")
+                }
+                style={{
+                  width: 24,
+                  height: 24,
+                  // tintColor: color, // This applies the active/inactive color
+                }}
+                contentFit="contain"
               />
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="investment"
-        options={{
-          title: "investment",
-          tabBarIcon: ({ color, focused }) => (
-            <Image
-              source={
-                focused
-                  ? require("../../assets/images/investment-active.png")
-                  : require("../../assets/images/investment-outline.png")
-              }
-              style={{
-                width: 24,
-                height: 24,
-                //  tintColor: color, // This applies the active/inactive color
-              }}
-              contentFit="contain"
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={
-                focused
-                  ? require("../../assets/images/profile-active.png")
-                  : require("../../assets/images/profile-outline.png")
-              }
-              style={{
-                width: 24,
-                height: 24,
-                // tintColor: color, // This applies the active/inactive color
-              }}
-              contentFit="contain"
-            />
-          ),
-        }}
-      />
-    </Tabs>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="savingsDashboard"
+          options={{
+            title: "My Savings",
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("../../assets/images/wallet-active.png")
+                    : require("../../assets/images/wallet-outline.png")
+                }
+                style={{
+                  width: 24,
+                  height: 24,
+                  // tintColor: color, // This applies the active/inactive color
+                }}
+                contentFit="contain"
+              />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="my_savings"
+          options={{
+            title: "",
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={{
+                  backgroundColor: Colors.Primary,
+                  height: 40,
+                  width: 40,
+                  borderRadius: 30,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  elevation: 5,
+                }}
+              >
+                <Ionicons
+                  name={focused ? "add" : "add-outline"}
+                  size={30}
+                  color={Colors.white}
+                />
+              </View>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="investment"
+          options={{
+            title: "investment",
+            tabBarIcon: ({ color, focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("../../assets/images/investment-active.png")
+                    : require("../../assets/images/investment-outline.png")
+                }
+                style={{
+                  width: 24,
+                  height: 24,
+                  //  tintColor: color, // This applies the active/inactive color
+                }}
+                contentFit="contain"
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("../../assets/images/profile-active.png")
+                    : require("../../assets/images/profile-outline.png")
+                }
+                style={{
+                  width: 24,
+                  height: 24,
+                  // tintColor: color, // This applies the active/inactive color
+                }}
+                contentFit="contain"
+              />
+            ),
+          }}
+        />
+
+        {/* this wont show on tabs */}
+        <Tabs.Screen name="(account_screens)" options={{ href: null }} />
+        <Tabs.Screen name="(airtime&data)" options={{ href: null }} />
+        <Tabs.Screen name="(electricityBills)" options={{ href: null }} />
+        <Tabs.Screen name="(my_saving)" options={{ href: null }} />
+        <Tabs.Screen name="(scratch_card)" options={{ href: null }} />
+        <Tabs.Screen name="(Gotv&Dstv)" options={{ href: null }} />
+        <Tabs.Screen name="(todo_screens)" options={{ href: null }} />
+      </Tabs>
     </ThemedContainer>
-    );
+  );
 }

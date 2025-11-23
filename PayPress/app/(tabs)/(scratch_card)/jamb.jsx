@@ -12,7 +12,7 @@ import ThemedText from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import CustonButton1 from "@/components/CustomButton1";
 import { Ionicons } from "@expo/vector-icons";
-import DropdownField from "../../components/DropDown";
+import DropdownField from "../../../components/DropDown";
 import InputField from "@/components/InputField";
 import { KeyboardAvoidingView } from "react-native";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
@@ -54,7 +54,7 @@ export default function Jamb() {
             <View>
               <View style={style.mainContainer}>
                 <Image
-                  source={require("../../assets/images/JAMB.png")}
+                  source={require("../../../assets/images/JAMB.png")}
                   style={style.Img}
                 />
 

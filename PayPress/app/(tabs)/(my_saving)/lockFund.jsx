@@ -53,7 +53,7 @@ export default function LockFunds() {
         {/* dash... */}
         <View style={style.dash_Container}>
           <ImageBackground
-            source={require("../../assets/images/savings_bg.png")}
+            source={require("../../../assets/images/savings_bg.png")}
             style={style.dash_image}
             resizeMode="cover"
           >
@@ -89,7 +89,7 @@ export default function LockFunds() {
                       width: 38,
                       height: 38,
                     }}
-                    source={require("../../assets/images/wallet-line.png")}
+                    source={require("../../../assets/images/wallet-line.png")}
                   />
                 </TouchableOpacity>
               </View>
@@ -112,7 +112,7 @@ export default function LockFunds() {
                 onPress={() => setSelectedType("4 Month Lock")}
                 text={"4 Month Lock"}
                 text2={"Short term high yield \n Min ₦5000"}
-                imageIcon={require("../../assets/images/clock-yellow.png")}
+                imageIcon={require("../../../assets/images/clock-yellow.png")}
                 percentage={"5.5%"}
                 active={selectedType === "4 Month Lock"}
               />
@@ -121,7 +121,7 @@ export default function LockFunds() {
                 onPress={() => setSelectedType("8 Month Lock")}
                 text={"8 Month Lock"}
                 text2={"Balanced growth option  \n Min ₦5000"}
-                imageIcon={require("../../assets/images/clock-blue.png")}
+                imageIcon={require("../../../assets/images/clock-blue.png")}
                 percentage={"7.5%"}
                 active={selectedType === "8 Month Lock"}
               />
@@ -130,7 +130,7 @@ export default function LockFunds() {
                 onPress={() => setSelectedType("12 Month Lock")}
                 text={"12 Month Lock"}
                 text2={"Short term high yield \n Min ₦30000"}
-                imageIcon={require("../../assets/images/clock-green.png")}
+                imageIcon={require("../../../assets/images/clock-green.png")}
                 percentage={"9.5%"}
                 active={selectedType === "12 Month Lock"}
               />
@@ -149,7 +149,7 @@ export default function LockFunds() {
             <View style={style.interestContainer}>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Image
-                  source={require("../../assets/images/expected_returns.png")}
+                  source={require("../../../assets/images/expected_returns.png")}
                   style={{ width: 30, height: 30, resizeMode: "contain" }}
                 />
                 <Text

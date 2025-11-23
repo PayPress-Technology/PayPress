@@ -203,6 +203,7 @@ export default function HomeScreen() {
           </View>
         </ImageBackground>
       </View>
+
       {/* TO_DO */}
       <ScrollView style={{ marginBottom: 50 }}>
         <View
@@ -227,7 +228,7 @@ export default function HomeScreen() {
             {/* BVN Card */}
             <TouchableOpacity
               onPress={() => {
-                router.push("../addBVN");
+                router.push("/addBVN");
               }}
             >
               <View style={style.cardConatiner}>
@@ -247,7 +248,7 @@ export default function HomeScreen() {
             {/* Lock funds */}
             <TouchableOpacity
               onPress={() => {
-                router.push("../lockFund");
+                router.push("/lockFund");
               }}
             >
               <View style={style.cardConatiner}>
@@ -267,7 +268,7 @@ export default function HomeScreen() {
             {/* Link Bank Card */}
             <TouchableOpacity
               onPress={() => {
-                router.push("../linkBank");
+                router.push("/linkBank");
               }}
             >
               <View style={style.cardConatiner}>

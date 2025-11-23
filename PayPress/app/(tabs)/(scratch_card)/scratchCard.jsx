@@ -21,19 +21,19 @@ export default function ScratchCard() {
     {
       id: 1,
       name: "JAMB",
-      image: require("../../assets/images/JAMB.png"),
+      image: require("../../../assets/images/JAMB.png"),
       route: "/jamb",
     },
     {
       id: 2,
       name: "WAEC",
-      image: require("../../assets/images/WAEC.png"),
+      image: require("../../../assets/images/WAEC.png"),
       route: "/waec",
     },
     {
       id: 3,
       name: "NECO",
-      image: require("../../assets/images/NECO.png"),
+      image: require("../../../assets/images/NECO.png"),
       route: "/neco",
     },
   ];

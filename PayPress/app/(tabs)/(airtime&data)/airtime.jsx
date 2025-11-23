@@ -22,10 +22,18 @@ import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 // networks
 const networks = [
-  { id: 1, name: "MTN", image: require("../../assets/images/MTN.png") },
-  { id: 2, name: "Airtel", image: require("../../assets/images/Airtel.png") },
-  { id: 3, name: "Glo", image: require("../../assets/images/Glo.png") },
-  { id: 4, name: "9Mobile", image: require("../../assets/images/9Mobile.png") },
+  { id: 1, name: "MTN", image: require("../../../assets/images/MTN.png") },
+  {
+    id: 2,
+    name: "Airtel",
+    image: require("../../../assets/images/Airtel.png"),
+  },
+  { id: 3, name: "Glo", image: require("../../../assets/images/Glo.png") },
+  {
+    id: 4,
+    name: "9Mobile",
+    image: require("../../../assets/images/9Mobile.png"),
+  },
 ];
 
 // amounts

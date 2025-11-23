@@ -22,12 +22,12 @@ import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 // networks
 const networks = [
-  { id: 1, name: "EKEDC", image: require("../../assets/images/EKEDC.png") },
-  { id: 2, name: "IKEDC", image: require("../../assets/images/IKEDC.png") },
-  { id: 3, name: "AEDC", image: require("../../assets/images/AEDC.png") },
-  { id: 4, name: "IBEDC", image: require("../../assets/images/ABEDC.png") },
-  { id: 5, name: "KEDCO", image: require("../../assets/images/KEDCO.png") },
-  { id: 6, name: "YEDC", image: require("../../assets/images/YEDC.png") },
+  { id: 1, name: "EKEDC", image: require("../../../assets/images/EKEDC.png") },
+  { id: 2, name: "IKEDC", image: require("../../../assets/images/IKEDC.png") },
+  { id: 3, name: "AEDC", image: require("../../../assets/images/AEDC.png") },
+  { id: 4, name: "IBEDC", image: require("../../../assets/images/ABEDC.png") },
+  { id: 5, name: "KEDCO", image: require("../../../assets/images/KEDCO.png") },
+  { id: 6, name: "YEDC", image: require("../../../assets/images/YEDC.png") },
 ];
 
 // amounts
@@ -146,7 +146,7 @@ export default function ElectricityBills() {
                   }}
                 >
                   <Image
-                    source={require("../../assets/images/searchIcon.png")}
+                    source={require("../../../assets/images/searchIcon.png")}
                     style={{ width: 13.3, height: 13.3 }}
                   />
                   <Text
@@ -256,7 +256,7 @@ export default function ElectricityBills() {
                     }}
                   >
                     <Image
-                      source={require("../../assets/images/payElectricityBills.png")}
+                      source={require("../../../assets/images/payElectricityBills.png")}
                       style={{ width: 10.5, height: 20.17 }}
                     />
                     <Text

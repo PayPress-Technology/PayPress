@@ -31,7 +31,7 @@ export default function Fund_Wallet() {
           <View style={styles.ImgContainer}>
             {/*  */}
             <Image
-              source={require("../../assets/images/fundWallet_mobile.png")}
+              source={require("../../../assets/images/fundWallet_mobile.png")}
               style={styles.Img}
             />
           </View>
@@ -39,7 +39,7 @@ export default function Fund_Wallet() {
           {/*  */}
           <View>
             <Image
-              source={require("../../assets/images/fundWallet_done.png")}
+              source={require("../../../assets/images/fundWallet_done.png")}
               style={{ height: 55.13, width: 55.13, alignSelf: "center" }}
             />
           </View>

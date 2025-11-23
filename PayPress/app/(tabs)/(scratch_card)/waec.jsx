@@ -15,17 +15,25 @@ import ThemedText from "@/components/ThemedText";
 import { Colors } from "@/constants/Colors";
 import CustonButton1 from "@/components/CustomButton1";
 import { Ionicons } from "@expo/vector-icons";
-import DropdownField from "../../components/DropDown";
+import DropdownField from "../../../components/DropDown";
 import InputField from "@/components/InputField";
 import { KeyboardAvoidingView } from "react-native";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { router } from "expo-router";
 
 const operators = [
-  { id: 1, name: "MTN", image: require("../../assets/images/MTN.png") },
-  { id: 2, name: "Airtel", image: require("../../assets/images/Airtel.png") },
-  { id: 3, name: "Glo", image: require("../../assets/images/Glo.png") },
-  { id: 4, name: "9Mobile", image: require("../../assets/images/9Mobile.png") },
+  { id: 1, name: "MTN", image: require("../../../assets/images/MTN.png") },
+  {
+    id: 2,
+    name: "Airtel",
+    image: require("../../../assets/images/Airtel.png"),
+  },
+  { id: 3, name: "Glo", image: require("../../../assets/images/Glo.png") },
+  {
+    id: 4,
+    name: "9Mobile",
+    image: require("../../../assets/images/9Mobile.png"),
+  },
 ];
 
 export default function Waec() {
@@ -68,7 +76,7 @@ export default function Waec() {
               <View>
                 <View style={style.mainContainer}>
                   <Image
-                    source={require("../../assets/images/WAEC.png")}
+                    source={require("../../../assets/images/WAEC.png")}
                     style={style.Img}
                   />
 

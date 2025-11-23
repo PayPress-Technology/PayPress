@@ -22,8 +22,8 @@ import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 // networks
 const networks = [
-  { id: 1, name: "DSTV", image: require("../../assets/images/EKEDC.png") },
-  { id: 2, name: "GOTV", image: require("../../assets/images/IKEDC.png") },
+  { id: 1, name: "DSTV", image: require("../../../assets/images/EKEDC.png") },
+  { id: 2, name: "GOTV", image: require("../../../assets/images/IKEDC.png") },
 ];
 
 // amounts
